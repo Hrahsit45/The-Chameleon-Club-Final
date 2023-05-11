@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap');
+body {
+  background-color: black;
+  color: white; 
+  font-family: 'Playfair Display';
+
+}
+.h1{
+  position: relative;
+  top:0.5px;
+  font-family: 'Playfair Display';font-size: 42px;
+  text-align: center;
+  letter-spacing: 2.5px;
+}
+
+.h2{
+  font-family: 'Playfair Display';font-size: 22px;
+  text-align: center;
+  letter-spacing: 1.5px;
+  line-height: 0px;
+  font-weight: 1;
+}
+.h3{
+  font-family: 'Playfair Display';font-size: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: 20;
+  position: relative;
+  font-weight:bold;
+  top: 10px;
+}
+
+#box1, #box2, #box3, #box4,#box5 {
+position: relative;
+display: none;
+border: 1px solid #1F1F1E;
+background-color:#1F1F1E;
+padding: 10px;
+margin-left: 160px;
+margin-bottom: 10px;
+display: flex;
+width: 900px;
+height: 110px;
+justify-content: center;
+left: 1.5%;
+}
+
+#one,#two,#three,#four,#five {
+font-family: 'Playfair Display';
+background-image: url("./image/icon.png");
+background-repeat: no-repeat;
+background-position: right 5px center;
+padding-right: 10px;
+background-size: 40px;
+font-size: 18px;
+background-color: white; 
+color: black; 
+padding: 5px 10px; 
+padding-left: 10px;
+border-radius: 20px; 
+text-align:initial;
+cursor: pointer; 
+display: block;
+margin: 0 auto;
+font-weight: bold;
+width: 800px;
+
+}
+
+.box1 {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.box1 button {
+flex-basis: calc(20% - 10px);
+margin: 5px;
+width: 160px;
+border-radius: 20px;
+}
+
+.img0 {
+position: absolute;
+ top: 17px;
+left: 15px; 
+width: 50px;
+}
+.img9 {
+position: absolute;
+top: 110px;
+left: 0;
+width: 95px;
+}
+.img8 {
+position: fixed;
+bottom: 0px;
+right: 0px;
+width: 180px;
+}
+button {
+width: 160px;
+font-weight:bold; 
+font-size: 13px;
+}
+#btn1.selected {
+background-color: #c9efc7;
+color: black;
+
+}
+#btn2.selected {
+background-color: #ff908b;
+color: white;
+}
+
+#btn3.selected {
+background-color: #046380;
+color: white;
+}
+#submit {
+background-color: white; 
+font-family: 'Playfair Display';
+color:black;
+padding: 12px 24px;
+text-align: center;
+font-size: 16px;
+border-radius: 20px;
+align-items: center;
+margin: 0 auto;
+display: block;
+}
+
+#btn1, #btn2, #btn3{
+  background: white;
+  color: #1F1F1E;
+  width: 160px;
+  height: 22px;
+  font-size:11px;
+  font: weight 2000px;;
+}

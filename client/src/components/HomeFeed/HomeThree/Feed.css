@@ -1,0 +1,134 @@
+
+
+/* Feed card */
+.feed {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  margin: 1vw;
+  /* background-color: #ffffff; */
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* width: 30rem; */
+  /* max-width: 100%; */
+}
+
+/* Feed header */
+.feed-header {
+  display: flex;
+  flex-direction: column;
+  /* align-items:flex-start; */
+
+  /* padding: 1rem; */
+  /* background-color: #f8f8f8; */
+}
+
+/* Feed image */
+.feed-image {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 1.3px solid black;
+}
+.feed-image-two{
+/* width:fit-content; */
+width: 37vw;
+height: 20vh;
+object-fit: cover;
+margin-left: -5vw;
+
+
+/* height: 20vh; */
+}
+
+.feed-image-two-tx{
+  /* position: absolute;
+  bottom: 0; */
+  font-size: 1vw;
+  
+  height: 5vh;
+  text-align: center;
+}
+.feed-header-bdy{
+  display:flex;
+  justify-content: space-between;
+  z-index: 100;
+  font-size: 1vw;
+  font-weight: 600;
+}
+.pro-fed-img
+{
+  display: flex;
+  text-align: center;
+}
+/* Feed text */
+.feed-text {
+  color: #000;
+  flex: 1;
+  margin-top: -4vh;
+  width: 100%;
+  margin-left: 5vw;
+  position: relative;
+}
+
+/* Feed likes */
+.feed-likes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+/* Feed comments */
+.feed-comments {
+  padding: 0.5rem;
+}
+
+/* Feed comment */
+.feed-comment {
+  margin: 0.5rem 0;
+}
+
+.feed-comment strong {
+  margin-right: 0.5rem;
+}
+
+/* Feed comment input */
+.feed-comment-input {
+  margin-top: 0.5rem;
+}
+
+.feed-comment-input input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.feed-likes button {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 1vw;
+  cursor: pointer;
+  padding: 0;
+}
+
+.feed-likes button:hover {
+  transform: scale(1.2);
+}
+.feed-likes button::before {
+  content: "\2665";
+  font-size: 2vw;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .feed {
+    width: 100%;
+  }
+}

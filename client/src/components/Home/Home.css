@@ -1,0 +1,209 @@
+/* **************Reusable Code*************** */
+.back-image{
+    max-width: 100vw;
+    object-fit: cover;
+}
+.btnn{
+    position: absolute;
+    top : 2%;
+    right: 2%;
+    font-size: 2vw;
+    width: fit-content;
+    }
+
+
+.section{
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #000;
+}
+/* **************Section one***************** */
+
+.mainhead{
+    position: absolute;
+    top: 10%;
+    left: 23%;
+   
+}
+
+.head1{
+  position: absolute;
+  top: 23%;
+  left: 33.5%;
+}
+.section1{
+   
+    height: 100vh;
+    background-size: "cover";
+    width: 100%;
+ }
+
+.videoback{
+    max-width: 100vw;
+    object-fit: cover;
+    /* position: absolute; */
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+}
+
+
+/* ****************************************
+                SECTION TWO
+****************************************** */
+.sectionTwo{
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+.sn-2-img{
+    position: absolute;
+    top: 10vh;
+    max-height: 80vh;
+    right: 10vw;
+}
+.sn-2-txt{
+    padding: 5vh;
+    font-size: 3vw;
+    background-color: #fff;
+    color: #000;
+    max-width: 50vw;
+    position: absolute;
+    top: 25vh;
+    left: 5vw;
+}
+.sn-2-txt-1 {
+    font-size: 4vw;
+    color: #000;
+    font-weight: 600;
+}
+
+.jtf{
+    font-size: small;
+}
+/* *********************************** 
+                SECTION THREE
+***************************************/
+.sectionThree{
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    background-color: #000;
+}
+.sn-3-img{
+    position: absolute;
+    top: 0;
+}
+.sn-3-txt{
+    padding: 5vh 0 5vh 10vw;
+    font-size: 3vw;
+    background-color: #fff;
+    color: #000;
+    max-width: 50vw;
+    position: absolute;
+    
+    top: 25vh;
+    right: 0;
+}
+.sn-3-txt-1 {
+    font-size: 4vw;
+    color: #000;
+    font-weight: 600;
+}
+.sn-3-txt-2{
+    font-size: 2vw;
+    color: #000;
+    font-weight: 400;
+}
+/* *********************************** 
+                SECTION FOUR
+***************************************/
+.sectionFour{
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    background-color: #000;
+}
+
+.sn-4-img{
+    position: absolute;
+    top: 0;
+}
+.sn-4-txt{
+    padding: 5vh 10vw 5vh 5vw;
+    font-size: 3vw;
+    background-color: #fff;
+    color: #000;
+    max-width: 50vw;
+    position: absolute;
+    top: 25vh;
+    left: 5vw;
+}
+.sn-4-txt-1 {
+   
+}
+.sn-4-txt-2{
+   
+}
+
+/* ****************************************
+                SECTION FIVE
+****************************************** */
+.sectionFive{
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 100vw;
+    background-color: #000;
+}
+.hn-five{
+    font-size: 6vw;
+}
+.sn-fiv-cn{
+    display: flex;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+.sn-fiv-cn-1{
+    /* display: grid;
+    grid-template-rows: repeat(3, 1fr); */
+}
+.sn-5-ctn-1{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+.sn-5-ctn-2{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+/* *********************************** 
+                SECTION SIX
+***************************************/
+.sectionSix{
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    background-color: black
+}
+.SectionSixText{
+    padding: 5vh;
+    font-size: 3vw;
+    background-color: #fff;
+    color: #000;
+    max-width: 50vw;
+    position: absolute;
+    top: 25vh;
+    left: 5vw;
+}
+.sn-6-tx-1{
+    top: 20vh;
+    font-size: 3.3vw;
+}
+.SixHeading{
+    font-size: 4vw;
+}
+.sn-6-tx-2{
+    margin-top: 5vh;
+}
+.sn-6-tx-3{
+    font-size: 2vw;
+}

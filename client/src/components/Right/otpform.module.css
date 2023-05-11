@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display:wght@700&display=swap');
+
+* {
+    margin : 0;
+    padding: 0;
+}
+
+.otp_main {
+    background-color: black;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    bottom: 0;
+
+}
+
+.vid1{  
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vid2 {
+    position: absolute;
+    top : 0;
+    height: 22%;
+}
+
+.card {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    left: 10%;
+    top: 30%;
+}
+
+.pn{
+     width: 65%;
+     margin-left: 15%;
+}
+
+.otp
+{
+    position: absolute;
+    width: 60%;
+    top:80%;
+    margin-left: 20%;
+}
+
+.rotp{
+    position: absolute;
+    width: 30%;
+    top:40%;
+    margin-left: 33%;
+}
+
+.taxt{
+    margin-left: 20%;
+}
+
+.cont{
+    position: relative;
+    top: 10%;
+}
+
+.bck{
+    width: 40%;
+    margin-left: 28%;
+}
+
+.otpinp{
+    position: absolute;
+    left:10%;
+}
+
+.main_text {
+    position: absolute;
+    color: azure;
+    left: 8%;
+    top: 20%
+}

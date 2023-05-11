@@ -1,0 +1,111 @@
+import React, { useState } from 'react';
+// import DatePicker from 'react-datepicker';
+import "./AddPost.css"
+// import 'react-datepicker/dist/react-datepicker.css';
+
+const Form = () => {
+const [date, setDate] = useState(new Date());
+const [time, setTime] = useState(new Date());
+const [likes, setLikes] = useState(0);
+const [image, setImage] = useState(null);
+const [gallery, setGallery] = useState([]);
+const [caption, setCaption] = useState('');
+
+const handleDateChange = (date) => {
+   setDate(date);
+ };
+
+const handleTimeChange = (time) => {
+ setTime(time);
+ };
+
+
+
+const handleLike = () => {
+setLikes(likes + 1);
+ };
+
+ const handleImageChange = (e) => {
+const file = e.target.files[0];
+ setImage(file);
+};
+
+
+
+const handleImageUpload = () => {
+   if (image) {
+ setGallery([...gallery, URL.createObjectURL(image)]);
+setImage(null);
+ }
+ };
+
+
+const handleCaptionChange = (e) => {
+ setCaption(e.target.value);
+ };
+
+ return (
+<form>
+<div className="form-group">
+<label htmlFor="date" className='label'>Date:</label>
+<br />
+<DatePicker
+ id="date"
+ selected={date}
+ onChange={handleDateChange}
+ dateFormat="dd/MM/yyyy"
+ />
+</div>
+<div className="form-group">
+<label htmlFor="time" className='label'>Time:</label>
+<br />
+<DatePicker
+         id="time"
+         selected={time}
+         onChange={handleTimeChange}
+         showTimeSelect
+         showTimeSelectOnly
+         timeIntervals={15}
+         timeCaption="Time"
+ dateFormat="h:mm aa"
+ />
+</div>
+<div className="form-group">
+<label htmlFor="likes" className='label'>Likes:</label>
+<br />
+<button type="button" onClick={handleLike}>
+ {likes} {likes === 1 ? 'like' : 'likes'}
+</button>
+</div>
+<div className="form-group">
+<label htmlFor="image">Image:</label>
+<br />
+<input type="file" id="image" onChange={handleImageChange} />
+<button type="button" onClick={handleImageUpload}>
+Upload
+</button>
+</div>
+<div className="form-group">
+<label htmlFor="caption" className='label'>Caption:</label>
+<br />
+<input
+ type="text"
+ id="caption"
+ value={caption}
+ onChange={handleCaptionChange}
+ style={{ backgroundColor: 'lightgray', color: 'white' }}
+ />
+</div>
+<div className="form-group">
+<label className='label'>Gallery:</label>
+<br />
+ {gallery.map((img, i) => (
+<img key={i} src={img} alt={`Image ${i}`} className="img-adpst" />
+))}
+</div>
+</form>
+ );
+};
+
+
+export default Form;

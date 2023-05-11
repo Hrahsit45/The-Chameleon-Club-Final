@@ -1,0 +1,314 @@
+.uhome-bdy{
+  display: grid;
+  grid-template-columns: 0.3fr 3fr 2fr 1.4fr ;
+  padding-right: 1vw;
+  height: 95vh;
+  gap: 2vw;
+  padding-top: 2vh;
+  position: relative;
+  color: black;
+}
+#bg-feed{
+  width: 100vw;
+  /* height: 100vh; */
+  margin:-2vh;
+  height: 100vh; 
+  object-fit: cover;
+}
+.uhome-bdy{
+  position:absolute;
+  top: 0%;
+}
+
+/* ************************************************************************ */
+                      /* HomeOne */
+/* ************************************************************************ */
+.uSn-one{
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  padding:1vh 1vw 1vh 1vw ;
+  justify-content: space-between;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.ulogo{
+  width: 5vw;
+  height: 10vh;
+  border-radius: 100%;
+}
+
+.uSn-one-img{
+  height: 6vh;
+  width:3.5vw;
+  border: 2px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+/* ************************************************************************ */
+                      /* HomeTWo */
+/* ************************************************************************ */
+
+.uSn-prf-tre{
+  text-align: center;
+  overflow-y:scroll;
+  background-color: white;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-top: 2vh;
+}
+.usrch-bar{
+  width: 80%;
+  height: 4vh;
+  margin-bottom: 2vh;
+  margin-left: 1vw;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-left:2vw ;
+}
+::-webkit-scrollbar{
+  width: auto;
+}
+.uSn-prf-tre-hn{
+  font-weight: 700;
+  font-size: 2vw;
+}
+.uSn-two-two-1{
+  font-size: 1.7vw;
+  font-weight: 700;
+}
+.uSn-two-two-2{
+  font-size: 1vw;
+  /* font-weight: 700; */
+}
+.uSn-two-one{
+  padding: 0 1vw 1vw 1vw;
+}
+.uSn-two-two{
+
+  padding-left: 2vw;
+  text-align: start;
+}
+.uSn-two-ctn{
+  background-color: white;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.uSn-two-ctn-img{
+  padding:0 0 2vw 2vw;
+  display: grid;
+  grid-template-columns: repeat(4 ,1fr);
+  grid-row-gap: 1vw;
+}
+.uSn-two-img{
+  height: 6vh;
+  width: 4vw;
+  border: 2px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.uSn-two-img-two{
+  margin-top: -4vh;
+  height: 6vh;
+  width: 4vw;
+  border: 2px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.uSn-two-ctn-body{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+}
+.uSn-two-img-two-hr{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+/* ************************************************************************ */
+                      /* HomeThree */
+/* ************************************************************************ */
+
+.uSn-Tw-usr{
+  padding-top: 2vw;
+  background-color: white;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  /* background-color: antiquewhite; */
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-rows: 3fr 2fr 4fr;
+  padding-left: 1.5vw;
+}
+.uSn-Tw-usr-two-bdy{
+  display: grid;
+  padding: 1.5vw 0 1.5vw 0;
+  grid-template-columns: repeat(3 ,1fr);
+  gap :1.5vw;
+}
+.uSn-Tw-usr-two-bdy-tx{
+  /* border: 2px solid black; */
+  font-weight: 700;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  padding: 0.5vw 0.5vw 0.5vw 0.5vw;
+  border-bottom-right-radius: 25px;
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+.uSn-Tw-usr-hn{
+ font-size: 2vw;
+ font-weight: 700;
+}
+.uprfle_img{
+  height: 20vh;
+  width: 13vw;
+ border-radius: 50%;
+  border: 2px solid black;
+  padding: 2px;
+  object-fit: contain;
+}
+.uSn-Tw-usr-one{
+  display: flex;
+}
+.uSn-Tw-usr-txt{
+ line-height: 5vh;
+}
+.uSn-Tw-usr-hn{
+  padding-top: 3vh;
+  padding-left: 2vw;
+}
+.uSn-Tw-usr-hn-hd{
+  font-size: 3vw;
+}
+.uspn-btn{
+  background-color: black;
+  color: white;
+  margin-left:2vh ;
+  padding: 0.5vw;
+  cursor: pointer;
+  font-weight: 600;
+}
+.uSn-Tw-usr-loc{
+  padding-left: 2.5vw;
+}
+  /* ************************************************************************ */
+                      /* HomeFour */
+/* ************************************************************************ */
+
+
+.uSn-usr-Four{
+  padding-top: 1.5vw;
+  background-color: white;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  max-height: 30vh;
+}
+.uSn-Four-hn-usr{
+  text-align: center;
+  font-size: 1.6vw;
+  font-weight: 700;
+  margin-bottom: 2vh;
+}
+.uSn-fr-usr-ctn-body{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding:1vw 1vw 1vw 3vw;
+}
+.uSn-fr-img{
+  height: 4vh;
+  width: 3vw;
+  border: 2px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.uSn-fr-two-1{
+  font-size: 1.3vw;
+  font-weight: 700;
+  padding-left: 0.5vw;
+}
+
+
+/* .Sn-two-ctn{
+
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+#img-ctr-one{
+  display: flex;
+  justify-content: center;
+}
+.Sn-fr-img{
+  height: 4vh;
+  width: 3vw;
+  border: 2px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.Sn-fr-img-two{
+  margin-top: -2vh;
+  height: 4vh;
+  width: 3vw;
+  border: 2px solid black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.Sn-fr-ctn-body{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding:1vw 1vw 0 1vw;
+}
+.Sn-two-img-two-hr{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.Sn-Four-hn{
+  font-weight: 700;
+  font-size: 1.7vw;
+}
+.Sn-fr-two-1{
+  font-size: 1.3vw;
+  font-weight: 700;
+}
+.Sn-fr-two-2{
+  font-size: 1vw;
+  /* font-weight: 700; */
+
+
+.uuSn-usr-Four{
+position: absolute;
+padding-top: 1.5vw;
+padding-bottom: 1.5vw;
+background-color: white;
+box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+border-top-left-radius: 25px;
+border-top-right-radius: 25px;
+border-bottom-left-radius: 25px;
+border-bottom-right-radius: 25px;
+max-height: 30vh;
+width: 20%;
+left : 80%;
+top : 40%
+  }
