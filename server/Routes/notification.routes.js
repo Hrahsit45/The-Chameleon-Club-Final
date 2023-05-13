@@ -56,9 +56,41 @@ const getNotification = async(req , res , next) => {
 }
 
 
+const deleteNotification = async(req , res , next) => {
+    
+    const userId = req.params.id;
+
+    console.log(userId)
+
+    var n = req.body.name
+    var t = req.body.text
+    var fid = req.params.fid
+    var ty = req.body.type
+
+    const data = {
+        name : n,
+        text : t,
+        userId : fid,
+        Typ : ty
+}
+    
+console.log(data)
+   
+await Users.updateOne({ _id: userId}, { $pull : { notification : data }})
+
+await Users.findOne({ _id : userId}).then((doc) => {
+    console.log("whooo")
+    console.log(doc)
+}).catch((Err) => {
+    console.log(Err)
+})
+
+}
+
 
 router.post('/save/:id/:fid' , saveNotifications)
 router.get('/get/:id' , getNotification)
+router.post('/del/:id/:fid' , deleteNotification)
 
 
 module.exports = router

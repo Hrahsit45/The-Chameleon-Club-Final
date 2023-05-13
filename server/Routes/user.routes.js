@@ -164,7 +164,8 @@ const getAll = async (req , res) => {
     const userId = req.params.id
     console.log(userId)
     Users.findOne({_id : userId}).then((docs) => {  
-        res.json(docs)  
+        res.json(docs)
+        console.log(docs)  
     }
     ).catch((err) => {
     console.log(err);
@@ -172,7 +173,28 @@ const getAll = async (req , res) => {
 
 }
 
+const getFreind = async(req , res , next) => {
 
+    var id = req.params.id
+    var fid = req.params.fid
+
+    await Users.findOne({_id : id}).then((docs) => {
+        res.json(docs)
+    }) 
+
+}
+
+const All = async(req , res , next) => {
+
+    console.log("hiiii")
+    Users.find().then(
+        (docs) => {
+            res.json(docs) 
+            console.log(docs)
+        } 
+    )
+}
+ 
 router.post('/sendRequest/:id/:fid' , sendRequest );
 
 router.post('/acceptRequest/:id/:fid' , updateRequest)
@@ -181,10 +203,14 @@ router.post('/deleteRequest/:id/:fid' , DeleteRequest)
  
 router.get('/fetchUserid/:id' , getAll)
 
-module.exports = router
+router.get('/isfriend/:id/:fid' , getFreind)
+
+router.get('/all' , All)
+
+module.exports = router 
 
 
-
+  
 
 
 

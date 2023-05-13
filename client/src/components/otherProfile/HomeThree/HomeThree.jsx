@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import Gallery from './Gallery';
 import './Feed.css';
 import image from "../Images/nature.jpg"
@@ -6,23 +6,65 @@ import axios from 'axios';
 
 
 
+
+
 function HomeThree(props) {
 
 
-  const [requestState , setRequest] = useState("connect")
+  const [requestState , setRequest] = useState("Connect")
 
   console.log(requestState)
-  console.log(props.uid + "  " +  props.data._id)
+//  console.log(props.uid + "  " +  props.data._id)
+
+  useEffect(() => {
+
+    console.log(props.uid + "  "  + props.data._i)
+
+    check()
+    
+  })
+
+  const check = async() => {
+      
+    await axios.get("http://localhost:5000/user/isfriend/"+props.uid+'/'+props.data._id).then((res) => {
+        console.log(res.data)
+        var accepted = [{}]
+        var sentReq = [{}]
+        sentReq = res.data.friendList
+        accepted = res.data.AcceptedReq;
+        var uid = []
+        var fuid = []
+        accepted.map((mem) => (
+        uid.push(mem.userId)
+        ))
+        console.log(uid + "  " + props.uid)
+        sentReq.map((mem) => (
+          fuid.push(mem.userId)
+        ))
+        console.log(fuid)
+        if(uid.includes(props.data._id))
+        {
+          setRequest('Disconnect')
+        }
+        else if(fuid.includes(props.data._id))
+        {
+          setRequest('RequestSent')
+        }
+        else
+        {
+          setRequest('Connect')
+        }
+        
+    })
+  }
 
   const handleRequest = async() => {
       console.log(props.uid)
-    // console.log("hiii")
-    if(requestState == 'connect'){
-
-      ///console.log("inside if")
-     //await axios.post('http://localhost:5000/user/sendRequest/'+props.uid+'/'+props.data._id)
-
+    
+    if(requestState == 'Connect'){
       const formData = new FormData();
+
+      var url1 = 'http://localhost:5000/user/sendRequest/'+props.uid+'/'+props.data._id
 
       console.log(props.data.name)
 
@@ -32,18 +74,27 @@ function HomeThree(props) {
      
       var url = 'http://localhost:5000/notify/save/'+props.uid+'/'+props.data._id
 
-      console.log(formData)
-      await axios.post(url , formData , {
+      axios.post(url1)
+      axios.post(url , formData , {
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then((res) => {
-      console.log(res)
-      }).catch((err) => {
-        console.log(err)
       })
-      setRequest('Diconnect')
+     
+      await check()
+      window.location.reload()
     }
+
+      if(requestState == 'Disconnect'){
+               
+        var url = 'http://localhost:5000/user/deleteRequest/'+props.uid+'/'+props.data._id
+
+         axios.post(url)
+
+         await check()
+         window.location.reload()
+
+      }
 
   }
   

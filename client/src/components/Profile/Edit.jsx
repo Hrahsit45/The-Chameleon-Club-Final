@@ -49,13 +49,12 @@ function EditProfilePage(props) {
     })
    } 
 
-   
    useEffect(() => {
    
     console.log("hiiiii1" + email)
 
 
-    if(phoneNumber == 0)
+    if(phoneNumber === 0)
     {
       fetchUrl = "http://localhost:5000/fetchUser/" + email
     }
@@ -63,7 +62,6 @@ function EditProfilePage(props) {
     {
       fetchUrl = "http://localhost:5000/fetchUser/" + phoneNumber
     }
-
     if(props.number != null)
     {
       setphoneNumber(props.number)
@@ -73,19 +71,54 @@ function EditProfilePage(props) {
       setEmail(props.email)
       setName(props.name)
     }
-
     console.log(var3)
-
     console.log(email)
+    fetchUser()    
+    
+  },[])
+   
+  //  useEffect(() => {
+   
+  //   console.log("hiiiii1" + email)
+
+
+  //   if(phoneNumber == 0)
+  //   {
+  //     fetchUrl = "http://localhost:5000/fetchUser/" + email
+  //   }
+  //   else
+  //   {
+  //     fetchUrl = "http://localhost:5000/fetchUser/" + phoneNumber
+  //   }
+
+  //   if(props.number != null)
+  //   {
+  //     setphoneNumber(props.number)
+  //   }
+  //   if(props.email != null)
+  //   {
+  //     setEmail(props.email)
+  //     setName(props.name)
+  //   }
+
+  //   console.log(var3)
+
+  //   console.log(email)
 
 
    
-    fetchUser()
+  //   fetchUser()
 
    
     
     
-  },[email])
+  // },[email])
+
+  
+
+ 
+
+
    
 
 

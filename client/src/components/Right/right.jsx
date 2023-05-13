@@ -124,7 +124,7 @@ function Form(props){
             state: {
                  email: profile.email,
                  name: profile.name,
-                 Mobile_no: 0,
+                 Mobile_no: null,
                  logout: logOut()
             }
         })
@@ -261,8 +261,8 @@ function Phone(props){
         //     })
         navigat('/profile' , {
             state: {
-                 email: "",
-                 name: "",
+                 email: null,
+                 name: null,
                  Mobile_no: phnvalue,
                  logout: logOut()
             }

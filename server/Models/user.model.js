@@ -34,7 +34,7 @@ const NUserSchema = mongoose.Schema({
         name : String,
         text : String,
         userId : String,
-        Typ : String,
+        Typ : String,  
     }]
     
 })

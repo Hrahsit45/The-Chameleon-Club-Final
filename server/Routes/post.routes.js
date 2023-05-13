@@ -127,16 +127,17 @@ const getUserPost = async (req , res , next) => {
 
 
 const updatePost =async (req , res) => {
+
+    console.log("updating post " + req.body.caption)
    
-    const url = req.protocol + '://' + req.get('host')
-
-    const image =  url + '/public/' + req.file.filename
-
     const id = req.params.id
 
     await Posts.updateOne({_id : id } , {
-        image : image ,
-        caption : req.body.text
+        caption : req.body.caption
+    })
+
+    await Posts.findOne({_id : id}).then((docs) => {
+        console.log(docs)
     })
 
 
@@ -153,20 +154,22 @@ const deletePost = (req , res) => {
     ).catch((err) => {
         console.log(err)
     }    
-    )
-}
+    ) 
+
+    console.log("deleted")
+}  
 
 
 const getFollowers = async (req , res , next) => {
 
     console.log("hello")
     let FriendIds 
-
-    const userid = req.params.id;
-
+  
+    const userid = req.params.id; 
+  
     await Users.findOne({_id : userid}).then((res) => {
         FriendIds =  res.AcceptedReq;
-    })
+    }) 
 
     console.log(FriendIds)
 
@@ -198,7 +201,7 @@ router.get('/:fid/:id' , getFollowers)
 
 router.get('/:id' , getPost)
 
-router.patch('/:id', upload.single('photo'), updatePost)
+router.patch('/:id',  updatePost)
 
 router.delete('/:id' , deletePost)
 

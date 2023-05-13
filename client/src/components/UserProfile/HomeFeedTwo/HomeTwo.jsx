@@ -12,18 +12,39 @@ function HomeTwo(props) {
   };
 
   const [data , setData] = useState([{}])
+  const [id , setId] = useState()
+  const [loading , setLoading] = useState(true)
 
-  useEffect(() => {
+  useEffect(()=>{
+    setData(props.data.AcceptedReq)
+    setId(props.data._id)
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    console.log(data)
+  //  fetchPost()
+  },[])
+
+  const fetchPost = async() => {
 
    //console.log(props.data.AcceptedReq)
-    setData(props.data.AcceptedReq)
-  // console.log(props.data.AcceptedReq)
-  data.map((e) => {
-    console.log(e.userId)
-  })
+   // setData(props.data.AcceptedReq)
+    //setId(props.data._id)     
+   
+     setData([])
+     const url = "http://localhost:5000/user/fetchUserid/"  + id
+      await axios.get(url).then((docs) => {
+       console.log(docs.data)
+       setData(docs.data.AcceptedReq)
+       console.log(data)
+     }
+        
+     ) 
+   // console.log(props.data)
+
    //fetchUser()
 
-  }, [])
+  }
 
 
 
@@ -90,8 +111,11 @@ function HomeTwo(props) {
 
   return (
     <div  className='uSn-prf-tre'>
+      {loading ? <></> : <>
       <p className='uSn-prf-tre-hn'>Connections</p>
+      
       <input type="text" placeholder="Search members... " onChange={handleSearch} className="usrch-bar" />
+      
       {data.map((member) => {
         return (
           
@@ -100,11 +124,13 @@ function HomeTwo(props) {
             imgSrc={Imges}
             name={member.name}
             memberCount=""
-            userId= {props.data._id}
-           // email={member.email}
+            userId= {id}
+           
           />
         );
       })}
+      </>}
+      
     </div>
   );
 }

@@ -28,7 +28,7 @@ const Verifiy = () => {
        canvas = document.getElementById('canvas');
        context = canvas.getContext('2d');
        snap = document.getElementById('snap');
-    },[])
+    },)
 
     
 
@@ -60,9 +60,11 @@ const Verifiy = () => {
         canvas.toBlob(function(blob) {
           formData.append('photo', blob);
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', '/upload', true);
+          xhr.open('POST', 'http://localhost:5000/upload', true);
           xhr.onload = function() {
             console.log('Photos uploaded');
+            var res = this.response
+            console.log(res)
           };
           xhr.send(formData);
         });
@@ -73,6 +75,7 @@ const Verifiy = () => {
 
       function handleChange(e) {
         console.log(e.target.files);
+       // console.log(context.drawImage(video, 0, 0, canvas.width, canvas.height))
         setFile(URL.createObjectURL(e.target.files[0]));
 
     }
@@ -122,7 +125,7 @@ const Verifiy = () => {
 
     <form className = 'vform'id="form" enctype="multipart/form-data">
      
-    <input type="file" onChange={handleChange} />
+    <input type="file" id = 'fileInput' onChange={handleChange} class="pre"/>
       <div class="preview">
       <img src={file} className='file-ip-1-preview' />
       </div>

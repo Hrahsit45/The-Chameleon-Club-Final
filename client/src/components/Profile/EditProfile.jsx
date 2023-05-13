@@ -45,8 +45,11 @@ const EditProfile = () => {
     
   // },[])
 
-  const handlChange = async() => {
-    let id ;
+  const [data , setData] = useState([{}])
+
+  useEffect(() => {
+
+      let id ;
     if(state.email != '')
     id = state.email
     else
@@ -54,21 +57,69 @@ const EditProfile = () => {
 
     var fetchUrl = "http://localhost:5000/fetchUser/" + id;
 
-    await axios.get(fetchUrl).then((res) => {
+     axios.get(fetchUrl).then((res) => {
       if(res == null)
       {
         alert("please enter your profile details")
+        setData(null)
       }
-      else{
-        console.log(res.data)
-        navi("/userprofile" , {
-          state : {
-             id: res.data,
-          }
-        })
+      else
+      {
+         setData(res.data)
       }
     }
     )  
+  })
+
+  const handlChange = async() => {
+
+    if(data == null)
+    { 
+         alert("please enter your profile details")
+    }
+     else{
+       // console.log(res.data)
+        navi("/userprofile" , {
+          state : {
+             id: data,
+          }
+        })
+      }
+   
+  }
+
+  const JoinNow = () => {
+    
+     if(data == null)
+    { 
+         alert("please enter your profile details")
+    }
+    else
+    {
+       navi("/custom" , {
+          state : {
+             data: data,
+          }
+        })
+    }
+
+  }
+
+  const verifyNow = () => {
+    
+     if(data == null)
+    { 
+         alert("please enter your profile details")
+    }
+    else
+    {
+       navi("/verify" , {
+          state : {
+             data: data,
+          }
+        })
+    }
+
   }
 
   return (
@@ -103,9 +154,9 @@ const EditProfile = () => {
                   <div className={EDP.Sn_edt_hn}>Customize Your Colors</div>
                   <div className={EDP.Sn_edt_bdy}>Unlock a world of personalized recommendations
                       by sharing your interests with us.</div>
-                      <Link to = "/custom">
-                  <button className={EDP.Sn_edt_bdy_btn}>Join Now!</button>
-                  </Link>
+                 
+                  <button className={EDP.Sn_edt_bdy_btn} onClick={JoinNow}>Join Now!</button>
+                
                 </div>
 
                 <div className={EDP.Sn_edt_rgt_1}>
@@ -114,9 +165,9 @@ const EditProfile = () => {
                   <div className={EDP.Sn_edt_hn}>Credibility Checkpoint</div>
                   <div className={EDP.Sn_edt_bdy}>It’s time to put a face to 
                   the name & unlock the magic of personalization!</div>
-                  <Link to = "/verify">
-                  <button className={EDP.Sn_edt_bdy_btn}>Let’s Get Verified!</button>
-                  </Link>
+                
+                  <button className={EDP.Sn_edt_bdy_btn} onClick={verifyNow}>Let’s Get Verified!</button>
+              
                 </div>
             </div>
           </div>

@@ -3,11 +3,12 @@ import cm from "./custom.css"
 import Icon from "./image/loogoo.gif"
 import Img1 from "./image/img1.png"
 import Img2 from "./image/img2.png"
+import axios from "axios";
 
 // *******************************************************************************************************
                                       // js
 // *******************************************************************************************************
-function validateSelection() {
+async function validateSelection() {
   var selectedButtons = document.querySelectorAll("#box1 button.selected, #box2 button.selected,#box3 button.selected,#box4 button.selected,#box5 button.selected");
   if (selectedButtons.length >= 10 && selectedButtons.length <= 20) {
     const selectedButtons = document.querySelectorAll(".selected");
@@ -15,7 +16,20 @@ function validateSelection() {
     selectedButtons.forEach((button) => {
       selectedButtonText.push(button.textContent);
   }) 
-  console.log("Selected buttons:", selectedButtonText);}
+  console.log("Selected buttons:", selectedButtonText);
+   var formData = new FormData()
+   formData.append('data' , selectedButtonText)
+
+   var url1 = 'http://localhost:5000/custom/send-data'
+ 
+  await axios.post(url1 , formData ,  {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
+
+}
   else {
     alert("Please select between 10 and 20 buttons");
   }
@@ -113,7 +127,7 @@ const Customize = () => {
     <h2 className = 'h2'>Unleash Your True Colors!</h2>
     <h3 className = 'h3'>Tap on Tags that you feel most resonated with!</h3><br/>
 <h4>
-    <button id="one" onClick={() => toggleBox1()}>&nbsp;Travel Preferences</button><br/>
+    <button id="two" onClick={() => toggleBox1()}>&nbsp;Travel Preferences</button><br/>
     <div id="box1" className="box1 rounded" >
       <button id="btn1" onClick={(e) => toggleSelected(e.target)}>Solo Backpacking</button>
       <button id="btn2" onClick={(e) => toggleSelected(e.target)}>Luxury Gateway</button>

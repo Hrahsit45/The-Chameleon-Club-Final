@@ -16,10 +16,11 @@ function HomeTwo(props) {
   useEffect(() => {
 
    //console.log(props.data.AcceptedReq)
+
    setData(props.data.AcceptedReq)
    // console.log(data)
 
-   //fetchUser()
+   //fetchUser() 
 
   }, [])
 
@@ -89,12 +90,12 @@ function HomeTwo(props) {
       <input type="text" placeholder="Search members... " onChange={handleSearch} className="usrch-bar" />
       {data.map((member) => {
         return (
-          
           <SnTwo
-            key={member.name}
+            id={member.userId}
             imgSrc={Imges}
             name={member.name}
             memberCount=""
+            userId={props.uid}
           />
         );
       })}

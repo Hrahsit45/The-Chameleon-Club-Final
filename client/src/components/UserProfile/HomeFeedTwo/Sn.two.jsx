@@ -1,24 +1,35 @@
 import axios from 'axios';
-import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import React , {useState , useEffect} from 'react';
+import {useNavigate, useSubmit} from 'react-router-dom'
 
 function SnTwo({ id , imgSrc, name, memberCount , userId}) 
 {
   const navi = useNavigate();
  
  // console.log(userId + " and " + id)
- 
+
+ const [data, setData] = useState([{}]);
+
+ console.log(userId)
 
   const handleChange = async() => {
 
     console.log(userId + " here")
+
+   await axios.get("http://localhost:5000/user/fetchUserid/" + userId).then((docs) => {
+      setData(docs.data)
+    })
+
     await axios.get( "http://localhost:5000/user/fetchUserid/" + id).then((res) => {
-
-
+  
+    
       navi("/otherProfile" , {
         state : {
-           data : res.data,
-           uid : userId
+           rdata : data,
+           data : res.data._id,
+           uid : userId,
+           id : data._id,
+
         }
       })
 

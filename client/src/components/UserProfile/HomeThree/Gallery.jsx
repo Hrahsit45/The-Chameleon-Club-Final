@@ -39,12 +39,46 @@ function Gallery(props) {
     { id: 4, src: Imag, postUrl: '#' },
   ];
 
+  const [capt , setcap] = useState('')
+  const [id , setId] = useState()
+
   const handleImageClick = (id) => {
     // const selected = images.find((img) => img.id === id);
     // if (selected) {
     //   window.location.href = selected.postUrl;
     // }
   };
+
+  const updatePost = async() => {
+
+
+    console.log("started")
+    const formData = new FormData();
+
+
+      formData.append('caption' , capt)
+     
+     
+      var url = 'http://localhost:5000/feed/'+id
+
+      console.log(formData)
+      await axios.patch(url , formData , {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((res) => {
+      console.log(res)
+      }).catch((err) => {
+        console.log(err)
+      })
+
+  }
+
+  const deletePost = async() => {
+    var url = 'http://localhost:5000/feed/'+id
+
+       await axios.delete(url)
+  }
 
   return (
     <div className="ugallery">
@@ -75,29 +109,32 @@ function Gallery(props) {
   <div class="md:flex md:items-center mb-6">
     <div class="md:w-1/3">
       <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-        Caption
+        Caption : {img.caption}
+      </label>
+    </div>
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+        Edit Caption 
       </label>
     </div>
     <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value={img.caption}   />
+      {/* {setcap(img.caption)} */}
+      {setId(img._id)}
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value={capt} onChange={(e) => setcap(e.target.value)} />
     </div>
   </div>
-  <label class="md:w-2/3 block text-gray-500 font-bold">
-      <input class="mr-2 leading-tight" type="file"
-      accept= ".png, .jpg, ,jpeg" 
-      name = "photo"
-       />
-      <span class="text-sm">
-      </span>
-    </label>
   <div class="md:flex md:items-center">
-    <div class="md:w-1/3"></div>
     <div class="md:w-2/3">
       <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button"
-      >
+      onClick={updatePost}>
         update
       </button>
-      <img   alt="tweetImg"  />
+  <br />
+    </div> <div class="md:w-2/3">
+      <button class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button"
+      onClick={deletePost}>
+        Delete
+      </button>
     </div>
   </div>
 </form>

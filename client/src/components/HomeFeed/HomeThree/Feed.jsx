@@ -25,7 +25,7 @@ const Feed = (props) => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    setData([])
+    //setData([])
     fetchPost()
   },[])
  
@@ -38,7 +38,7 @@ const Feed = (props) => {
       console.log(res.data)
     
     setData([])
-    
+     
      const newData = res.data.map(Object => ({
         //  only use these fields for newData
                id: Object._id,

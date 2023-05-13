@@ -22,7 +22,7 @@ All
 Following
 </div>
 <div className={`component ${selectedComponent === 'Newest' ? 'selected' : ''}`} onClick={() => handleComponentClick('Popular')}>
- Add Post
+ Search User
 </div>
 {/* <div className={`component ${selectedComponent === 'Popular' ? 'selected' : ''}`} onClick={() => handleComponentClick('Newest')}>
 Popular
@@ -33,7 +33,7 @@ Popular
 {selectedComponent === 'all' && <p><Feed id = {props.id}/></p>}
 {selectedComponent === 'Following' && <p><Following id = {props.id}/></p>}
 {/* {selectedComponent === 'Newest' && <p><Feed /></p>} */}
-{selectedComponent === 'Popular' && <p><AddPost id = {props.id}  name = {props.name}/></p>}
+{selectedComponent === 'Popular' && <p><AddPost id = {props.id}  name = {props.name}  data = {props.data}/></p>}
 
 </div>
 </div>
