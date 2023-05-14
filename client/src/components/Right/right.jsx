@@ -90,44 +90,41 @@ function Form(props){
     };
 
     async function one (){
-        var fetchUrl = "http://localhost:5000/fetchUser/"
+        var fetchUrl = "http://localhost:5000/user/fetchUser/"
 
      
-        fetchUrl = "http://localhost:5000/fetchUser/" + profile.email
+        fetchUrl = "http://localhost:5000/user/fetchUser/" + profile.email
       
 
       await axios.get(fetchUrl)
-  .then(res => {
-      if(res != null)
+      .then(res => {
+      if(res.data == null)
       {
-          console.log(res.data)
-        //   navigat("/homefeed" , {
-        //       state : {
-        //          id: res.data._id,
-        //          name: res.data.name,
-        //          email : res.data.email,
-        //          number : res.data.mobile
-        //       }
-        //     })
-        navigat('/profile' , {
-            state: {
-                 email: profile.email,
-                 name: profile.name,
-                 Mobile_no: 0,
-                 logout: logOut()
-            }
-        })
+           navigat("/profile", {
+             state: {
+               email: profile.email,
+               name: profile.name,
+               Mobile_no: null,
+               var: 0,
+               profile: profile,
+               logout: logOut(),
+             },
+           });  
+      
       }
       else
       {
-        navigat('/profile' , {
+          if(res.data!=null){
+          navigat("/homefeed", {
             state: {
-                 email: profile.email,
-                 name: profile.name,
-                 Mobile_no: null,
-                 logout: logOut()
-            }
-        })
+              data: res.data,
+              id: res.data._id,
+              name: res.data.name,
+              email: res.data.email,
+              number: res.data.mobile,
+            },
+          });
+        }
       }
 
   })
@@ -240,33 +237,37 @@ function Phone(props){
     };
 
     async function one (){
-        var fetchUrl = "http://localhost:5000/fetchUser/"
+        var fetchUrl = "http://localhost:5000/user/fetchUser/"
 
      
-        fetchUrl = "http://localhost:5000/fetchUser/" + phnvalue
+        fetchUrl = "http://localhost:5000/user/fetchUser/" + phnvalue
       
 
       await axios.get(fetchUrl)
   .then(res => {
-      if(res != null)
+      if(res.data != null)
       {
           console.log(res.data)
-        //   navigat("/homefeed" , {
-        //       state : {
-        //          id: res.data._id,
-        //          name: res.data.name,
-        //          email : res.data.email,
-        //          number : res.data.mobile
-        //       }
-        //     })
-        navigat('/profile' , {
-            state: {
-                 email: null,
-                 name: null,
-                 Mobile_no: phnvalue,
-                 logout: logOut()
-            }
-        })
+          navigat("/homefeed" , {
+              state : {
+                 data : res.data,
+                 id: res.data._id,
+                 name: res.data.name,
+                 email : res.data.email,
+                 number : res.data.mobile
+              }
+            })
+       
+        // navigat('/profile' , {
+        //     state: {
+        //          email: null,
+        //          name: null,
+        //          Mobile_no: phnvalue,
+        //          profile:null,
+        //          var: 0
+        //         //  logout: logOut()
+        //     }
+        // })
       }
       else
       {
@@ -275,6 +276,7 @@ function Phone(props){
                    email: "",
                    name: "",
                    Mobile_no: phnvalue,
+                   profile : null,
                    logout: logOut()
               }
           })

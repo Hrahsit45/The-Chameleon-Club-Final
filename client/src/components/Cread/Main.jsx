@@ -44,7 +44,7 @@ async function validateSelection() {
                 selectedButtonNames += button.innerHTML + " ";
             });
           //   console.log("Selected buttons: " + selectedButtonNames.trim());
-           
+            
         }
     function toggleBox1() {
             var box1 = document.getElementById("box1");

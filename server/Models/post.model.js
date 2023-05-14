@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const PostsSchema = mongoose.Schema({
     userId : mongoose.Schema.Types.ObjectId,
     image: String,
+    profile:String,  
     caption: String,
     name: String,
     date: String,

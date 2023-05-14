@@ -96,6 +96,7 @@ function HomeTwo(props) {
             name={member.name}
             memberCount=""
             userId={props.uid}
+            profile = {member.profile}
           />
         );
       })}

@@ -115,6 +115,8 @@ const HomeOne = (props) => {
   const [photo , setPhoto] = useState("")
 
   const url = "http://localhost:5000/feed/"  + id
+
+  console.log(id)
   
   const handleSubmit = async(e) => {
 
@@ -191,6 +193,21 @@ const HomeOne = (props) => {
 window.location.reload()
 
   }
+
+  const goToEditProfile = () => {
+     navi("/profile", {
+       state: {
+         email: props.data.email,
+         name: props.data.name,
+         Mobile_no: props.data.mobile,
+         profile:props.data.profile,
+         var:0
+        //  logout: logOut(),
+       },
+     });
+  }
+
+
   return (
     <div>
       <div className="uSn-one">
@@ -283,7 +300,7 @@ window.location.reload()
             </Popup>
           </div>
           <div>
-            <img src={imges} alt="image" className="uSn-one-img" />
+            <img src={imges} alt="image" className="uSn-one-img"  onClick={goToEditProfile}/>
           </div>
           <div>
             <img src={imges} alt="image" className="uSn-one-img" />
@@ -342,7 +359,6 @@ window.location.reload()
                         >
                           POST
                         </button>
-                        <img alt="tweetImg" />
                       </div>
                     </div>
                   </form>

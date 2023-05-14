@@ -20,7 +20,7 @@ const Customize = (req, res) => {
 
   // Send the data to the Python script
   pythonProcess.stdin.write(JSON.stringify(data));
-  pythonProcess.stdin.end(); 
+  pythonProcess.stdin.end();   
 
   // Listen for data from the Python script
   pythonProcess.stdout.on("data", (data) => {
@@ -34,7 +34,7 @@ const Customize = (req, res) => {
   });
 }
 
-router.post("/send-data", Customize);
+router.post("/send-data", Customize); 
 
-
-module.exports = router; 
+ 
+module.exports = router;    

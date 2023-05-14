@@ -47,7 +47,8 @@ const Feed = (props) => {
                caption: Object.caption,
                userId : Object.userId,
                date : Object.date,
-               time : Object.time
+               time : Object.time,
+               profile : Object.profile
       }));
       
       setData(data => [...data, ...newData]);
@@ -109,7 +110,12 @@ const Feed = (props) => {
   //     return feed;
   //   });
   //   setFeeds(updatedFeeds);
-  // };
+  // };\\
+
+
+  const AddLike = () => {
+
+  }
 
 
   return (
@@ -119,7 +125,7 @@ const Feed = (props) => {
         <div className="feed" key={feeed._id}>
           <div className="feed-header">
             <div className='feed-header-bdy'>
-            <div className='pro-fed-img'><img src={feeed.image} alt="feed" className="feed-image" />
+            <div className='pro-fed-img'><img src={feeed.profile} alt="feed" className="feed-image" />
             <span  className='pro-fed-img-txt'>{feeed.name}</span></div>
             <div><span>{feeed.date}</span> &nbsp;
               <span>{feeed.time}</span></div>
@@ -135,7 +141,7 @@ const Feed = (props) => {
 
           <div className="feed-likes">
           <p className="feed-image-two-tx text-black">{feeed.caption}</p>
-            <button > ({})</button>
+            <button onClick={AddLike(feeed._id)}> ({})</button>
           </div>
         
         </div>

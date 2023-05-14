@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 let Users = require('../Models/user.model')
 
 let Posts = require('../Models/post.model');
-const { Console } = require('console');
+
 
 const DIR = './public/';
 
@@ -42,18 +42,28 @@ var upload = multer({
 
 
 
-const savePost = (req, res, next) => {
+const savePost = async(req, res, next) => {
     
     const url = req.protocol + '://' + req.get('host')
+    var name1;
+    var profile;
+
+    await Users.findOne({_id : req.params.id}).then((docs)=>{
+        name1 = docs.name , 
+        profile = docs.profile
+    })
+
+
     const Post = {
         userId : req.params.id,
         likes : [req.params.id],
         image: url + '/public/' + req.file.filename,
         caption: req.body.caption,
-        name: req.body.name,
+        name: name1,
         date: req.body.date,
-        time: req.body.time
-    };
+        time: req.body.time,
+        profile: profile
+    }; 
 
     console.log(Post)
     Posts.create(Post)

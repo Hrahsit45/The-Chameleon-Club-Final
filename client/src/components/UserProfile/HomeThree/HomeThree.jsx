@@ -11,7 +11,7 @@ function HomeThree(props) {
     <div className='uSn-Tw-usr'>
       {/* ************************One****************** */}
      <div className='uSn-Tw-usr-one'>
-      <img src={image} alt="Profile Image" className='uprfle_img' />
+      <img src={props.data.profile} alt="Profile Image" className='uprfle_img' />
       <div>
       <div className='uSn-Tw-usr-hn Sn-Tw-usr-hn-hd'>{props.data.name}</div>
       <div className='uSn-Tw-usr-txt'>

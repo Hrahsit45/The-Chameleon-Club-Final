@@ -2,7 +2,7 @@ import axios from 'axios';
 import React , {useState , useEffect} from 'react';
 import {useNavigate, useSubmit} from 'react-router-dom'
 
-function SnTwo({ id , imgSrc, name, memberCount , userId}) 
+function SnTwo({ id , imgSrc, name, memberCount , userId , profile}) 
 {
   const navi = useNavigate();
  
@@ -42,7 +42,7 @@ function SnTwo({ id , imgSrc, name, memberCount , userId})
     <div className='uSn-two-ctn-body' onClick={handleChange}>
       <div className='uSn-two-one'>
         
-          <img src={imgSrc} alt="image" className='uSn-two-img' />
+          <img src={profile} alt="image" className='uSn-two-img' />
         
       </div>
       <div className='uSn-two-two'>

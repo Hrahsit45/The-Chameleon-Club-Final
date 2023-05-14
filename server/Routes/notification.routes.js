@@ -3,20 +3,29 @@ const Users = require("../Models/user.model")
 const express = require('express')
 
 const  router = express.Router();
-
+ 
 
 const saveNotifications = async(req , res  , next) => {
    
     console.log("yooo")
 
     console.log(req.body)
+    var fid = req.params.fid
 
 
     const userId = req.params.id;
 
+     var name1;
+     var profile;
+
+     await Users.findOne({ _id: fid }).then((docs) => {
+       name1 = docs.name;
+       profile = docs.profile
+     });
+
     console.log(userId)
 
-    var n = req.body.name
+    var n = name1
     var t = req.body.text
     var fid = req.params.fid
     var ty = req.body.type
@@ -25,7 +34,8 @@ const saveNotifications = async(req , res  , next) => {
         name : n,
         text : t,
         userId : fid,
-        Typ : ty
+        Typ : ty,
+        profile : profile
 }
     
 
@@ -76,7 +86,7 @@ const deleteNotification = async(req , res , next) => {
     
 console.log(data)
    
-await Users.updateOne({ _id: userId}, { $pull : { notification : data }})
+await Users.updateOne({ _id: userId}, { $pull : { notification : {userId : fid , Typ : ty} }})
 
 await Users.findOne({ _id : userId}).then((doc) => {
     console.log("whooo")

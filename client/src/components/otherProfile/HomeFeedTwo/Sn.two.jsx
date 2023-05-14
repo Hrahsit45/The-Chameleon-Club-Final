@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSubmit } from "react-router-dom";
 
-function SnTwo({ id, imgSrc, name, memberCount, userId }) {
+function SnTwo({ id, imgSrc, name, memberCount, userId , profile}) {
   const navi = useNavigate();
 
   // console.log(userId + " and " + id)
@@ -12,8 +12,9 @@ function SnTwo({ id, imgSrc, name, memberCount, userId }) {
   console.log(userId);
 
   const handleChange = async () => {
-    console.log(userId + " here");
-
+    
+    if(id !== userId)
+    {
     await axios
       .get("http://localhost:5000/user/fetchUserid/" + userId)
       .then((docs) => {
@@ -33,11 +34,12 @@ function SnTwo({ id, imgSrc, name, memberCount, userId }) {
         });
       })
       .catch((err) => {});
+    }
   };
   return (
     <div className="uSn-two-ctn-body" onClick={handleChange}>
       <div className="uSn-two-one">
-        <img src={imgSrc} alt="image" className="uSn-two-img" />
+        <img src={profile} alt="image" className="uSn-two-img" />
       </div>
       <div className="uSn-two-two">
         <div className="uSn-two-two-1">{name}</div>

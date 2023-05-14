@@ -28,13 +28,15 @@ const NUserSchema = mongoose.Schema({
 
     AcceptedReq :  [{
         name : String,
-        userId : String
+        userId : String,
+        profile : String,
     }],
     notification : [{
         name : String,
         text : String,
         userId : String,
-        Typ : String,  
+        Typ : String, 
+        profile : String, 
     }]
     
 })

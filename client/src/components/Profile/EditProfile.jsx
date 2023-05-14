@@ -4,7 +4,6 @@ import EDP from "./EditProfile.module.css"
 import BacImg from "../ProfileImages/UserProfile.svg"
 import Brush from "../ProfileImages/Brush.svg"
 import Tick from "../ProfileImages/Tick.svg"
-import imag from "../images-videos/Avatar.png"
 import EditProfilePage from "./Edit"
 import Logo from "../ProfileImages/Logo.mp4"
 import Axios from 'axios'
@@ -14,11 +13,17 @@ import axios from "axios";
 
 // import Background from "./Images/Background.svg"
 // import back from "./Images/"
+
+var allEmail = []
+var allPhone = []
+
 const EditProfile = () => {
 
   const {state} = useLocation()
   const navi = useNavigate()
   
+  const [pv , setPv] = useState();
+  const [photo , setPhoto] = useState()
 //   const [name , setname] = useState("")
 //   const [email , setemail] = useState("")
 //   const [Mobile_no , setnumber] = useState(0) 
@@ -49,13 +54,14 @@ const EditProfile = () => {
 
   useEffect(() => {
 
+    console.log(data)
       let id ;
     if(state.email != '')
     id = state.email
     else
     id = state.Mobile_no
 
-    var fetchUrl = "http://localhost:5000/fetchUser/" + id;
+    var fetchUrl = "http://localhost:5000/user/fetchUser/" + id;
 
      axios.get(fetchUrl).then((res) => {
       if(res == null)
@@ -66,24 +72,29 @@ const EditProfile = () => {
       else
       {
          setData(res.data)
+         setPhoto(res.data.profile)
+         console.log(res.data)
       }
     }
     )  
-  })
+  },[])
 
   const handlChange = async() => {
 
     if(data == null)
     { 
+         //console.log(data + "hurray")
          alert("please enter your profile details")
     }
      else{
-       // console.log(res.data)
+     //  console.log(data);
+     
         navi("/userprofile" , {
           state : {
              id: data,
           }
         })
+        // console.log(data[0]);
       }
    
   }
@@ -140,9 +151,8 @@ const EditProfile = () => {
         {/* *********************BODY***************************** */}
           <div className={EDP.Sn_edt_1}> 
             <div className={EDP.Sn_edt_lft}>
-            <img src={imag} alt="Profil-img" id='Profil-img' className={EDP.Profile_img}/>
-            <div className={EDP.Sn_edt_hn_1}>My Profile</div>
-              <div className={EDP.Sn_edt}><EditProfilePage name = {state.name} email = {state.email} number = {state.Mobile_no}/></div>
+          
+              <div className={EDP.Sn_edt}><EditProfilePage name = {state.name} email = {state.email} number = {state.Mobile_no} pv = {state.var} data = {data} photo = {photo}/></div>
 
             </div>
 

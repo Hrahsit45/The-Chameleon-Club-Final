@@ -17,7 +17,7 @@ const multer = require('multer')
 const app = express();
 app.use(cors())
 
-
+   
 
 // const DIR = './public/';
 
@@ -25,7 +25,7 @@ app.use(cors())
 //     destination: (req, file, cb) => {
 //         cb(null, DIR);
 //     },
-//     filename: (req, file, cb) => {
+//     filename: (req, file, cb) => { 
 //         const fileName = file.originalname.toLowerCase().split(' ').join('-');
 //         cb(null, uuidv4() + '-' + fileName)
 //     }
@@ -41,7 +41,7 @@ app.use(cors())
 //             return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
 //         }
 //     }
-// });
+// }); 
 
 
 var upload = multer({storage: multer.memoryStorage()})
@@ -79,73 +79,6 @@ app.post('/' ,(req ,res) => {
     
 })
 
-const fetchUser = (req, res) => {
-
-
-    function containsOnlyNumbers(str) {
-        return /^\d+$/.test(str);
-      }
-    
-    const v = req.params.data
-    const check = containsOnlyNumbers(v)
-    if(check || v.charAt(0) == '+')
-    {
-        const num = v.substring(v.length - 10);
-        const rnum = num*1
-        Users.findOne({mobile : rnum}).then((docs) => {
-            res.json(docs)
-        }
-        ).catch((err) => {
-            console.log(err);
-        })
-    }
-    else{
-        Users.findOne({email : v}).then((docs) => {
-          //  res.json(docs)
-            if(docs == null)
-            {
-               res.json(docs)
-            }
-            else
-            {
-                res.json(docs)
-            }
-        }
-        ).catch((err) => {
-            console.log(err);
-        })
-    }
-}
-
-
-
-
-const saveUser = (req ,res) =>{
-
-    var n = 10
-    var num = req.body.mobile_no;
-    num = num.toString()
-    var cnum = num.substring(num.length - n)
-    var rnum = cnum*1
-
-    const newpost = new Users ({
-      name : req.body.Name,
-      email : req.body.Email,
-      mobile : rnum
-    })
-    
-  newpost.save().then(doc => {
-      console.log(doc)
-  }).catch(err => {
-      console.log(err)
-  })
-
-  console.log("heeeeeeeeeee")
-}
-
-app.get('/fetchUser/:data' , fetchUser)
-app.post('/saveUser' , saveUser )
-
 
 
 // verification session 
@@ -157,7 +90,7 @@ app.post('/upload', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 'pho
     const pythonProcess = spawn('python', ['script.py']);
   
     const uploadFileData = uploadFile.buffer;
-    const photoFileData =  photoFile.buffer;
+    const photoFileData =  photoFile.buffer;  
     console.log(uploadFileData,photoFileData);
   
     

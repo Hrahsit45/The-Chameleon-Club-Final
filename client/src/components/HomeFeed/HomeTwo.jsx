@@ -5,7 +5,7 @@ const HomeTwo = () => {
 
     <div className='Sn-two'>
         <div className='Sn-two-ctn'>
-          <p>Stories</p>
+          <p className='text-black'>Stories</p>
 
           <div className='Sn-two-ctn-img'>
             <img src={imges} alt="image" className='Sn-two-img' />
