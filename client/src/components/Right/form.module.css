@@ -68,7 +68,7 @@ p {
 .btn1{
     position: absolute;
     top: 45%;
-    left: 16% ;
+    left: 10% ;
     padding : 15px 30px;
    
 }
@@ -76,15 +76,21 @@ p {
 .btn2{
    
     top: 60%;
-    margin-left: 18.3%;
+    left: 10%;
+    /* margin-left: 18.3%; */
     padding : 15px 30px;
+    transition: background-color .5s;
    
 }
+/* 
+.btn1:hover{
+    background-color: #000;
+  } */
 
 .btn3{
     position: absolute;
-    margin-top: 20%;
-    margin-left: 18.3%;
+    /* margin-top: 20%;
+    margin-left: 18.3%; */
     padding : 15px 30px;
     background-color: rgb(100, 162, 219);
     border-radius: 12px;

@@ -10,7 +10,7 @@ import 'firebase/compat/firestore';
 import { getAuth, signInWithPhoneNumber } from "firebase/auth";
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import axios from 'axios'
-import vid from "../images-videos/TCC_Website_Banner.mp4"
+import vid from "../images-videos/TCC_Website_Banner.gif"
 import vid2 from "../ProfileImages/Logo.mp4"
 import { Navigate, useNavigate } from "react-router-dom";
 import opf from "../Right/otpform.module.css"
@@ -151,11 +151,11 @@ function Form(props){
                  <h1 className= {["text-5xl font-bold" , fs.main_text].join(" ")}>Unleash Your Spectrum!</h1>
                  <p className={["t-text text-100 text-base text-white" , fs.smalltext].join(" ")}>Pick your way of entry, and</p> 
                  <p className={["t-text text-100 text-base text-white" , fs.smalltext1].join(" ")}>hop onto a journey of transformation!!</p>
-                 <button className={["bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded position: absolute z-40" , fs.btn1].join(" ")}
+                 <button className={["bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-20 border border-blue-700 rounded flex-start z-40" , fs.btn1].join(" ")}
                     onClick={props.toggleBool}>
                     Continue with Phone Number
                 </button>
-                <button className={["bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded position: absolute z-40" , fs.btn2].join(" ")}
+                <button className={["bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border mx-20 border-blue-700 rounded position: absolute z-40" , fs.btn2].join(" ")}
                 onClick={() => login()}>
                         Continue with Google
                         </button>

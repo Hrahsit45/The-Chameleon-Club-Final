@@ -241,7 +241,7 @@ window.location.reload()
 
 
   return (
-    <div>
+    <div className="sideBar">
       <div className="uSn-one">
         {/* ******************LOGO************************** */}
         <video

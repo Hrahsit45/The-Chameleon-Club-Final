@@ -1,11 +1,11 @@
 import React from 'react'
-import HomeOne from './HomeOne'
+// import HomeOne from './HomeOne'
 import HomeTwo from './HomeTwo'
 import HomeThree from './HomeThree/HomeThree'
 import HomeFour from './HomeFour'
 import NewHomeOne from '../UserProfile/HomeOne'
 import "./HomeFeed.css"
-import HomeBAck from "./Images/HomeBackgrund.svg"
+import HomeBAck from "../Images/MicrosoftTeams-image.png"
 import { useLocation } from 'react-router-dom'
 import { useState , useEffect } from 'react';
 import axios from 'axios';

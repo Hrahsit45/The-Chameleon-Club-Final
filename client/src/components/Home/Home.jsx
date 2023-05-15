@@ -3,7 +3,7 @@ import "./Home.css"
 // import SectionFiv from "../Home/Sectionfive"
 import SectionThree from "./SectionThree"
 import SectionFour from './Sectionfour'
-import video from "../videos/TCC_Website_Banner.mp4"
+import video from "../videos/TCC_Website_Banner.gif"
 import SectionSix from './SectionSix'
 import SectionTwo from './SectionTwo'
 import { Link } from 'react-router-dom'
@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
     <section className='section'>
-    <video src={video} autoPlay loop muted class="videoback"type='video/mp4' /> 
+    <img src={video}  loop class="videoback"/> 
     <div className='content'>
       <div className='text-7xl text-white mainhead'>The Chameleon Club</div>
       <h2 className='text-white text-lg font-thin text-centre head1'>UNLEASH YOUR TRUE COLORS IN A SAFE SPACE</h2>
