@@ -20,6 +20,8 @@ const Home = () => {
 
   useEffect(() => {
 
+    console.log(state.id)
+
    setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -39,7 +41,7 @@ const Home = () => {
       <div className='uhome-bdy'>
       <HomeOne data = {state.id} id = {state.id._id} name = {state.id.name} email = {state.id.email}/>
       <HomeThree data = {state.id}/>
-      {loading ? <></> :  <HomeTwo data = {data}/>}
+      {loading ? <></> :  <HomeTwo data = {state.id}/>}
       <HomeFour/>
       <Notify />
     </div>

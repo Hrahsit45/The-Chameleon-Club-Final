@@ -67,7 +67,7 @@ function Gallery(props) {
           'Content-Type': 'application/json'
         }
       }).then((res) => {
-      console.log(res)
+     // console.log(res)
       }).catch((err) => {
         console.log(err)
       })
@@ -89,7 +89,13 @@ function Gallery(props) {
           onClick={() => handleImageClick(img._id)}
         >
           <Popup
-            trigger={<img class="uimg" src={img.image} alt=" profile pic" />}
+            trigger={
+              <img
+                class="uimg border-2 border-black"
+                src={img.image}
+                alt=" profile pic"
+              />
+            }
             modal
             nested
           >

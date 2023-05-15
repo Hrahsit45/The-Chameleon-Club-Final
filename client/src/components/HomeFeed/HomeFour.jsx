@@ -3,7 +3,7 @@ import imges from './Images/smallImg.jpg'
 
 const HomeFour = () => {
   return (
-    <div className='Sn-Four'>
+    <div className='Sn-Four border-8 border-black'>
       <div className=' Sn-Four-hn'>
         Tribe you might be like
       </div>
@@ -62,7 +62,7 @@ const HomeFour = () => {
                 </div>
           </div>
 {/* Four */}
-<div className='Sn-fr-ctn-body'>
+{/* <div className='Sn-fr-ctn-body'>
               <div className='Sn-two-one'>
                 <div id="img-ctr-one">
                   <img src={imges} alt="image" className='Sn-fr-img '/>
@@ -77,7 +77,7 @@ const HomeFour = () => {
                   <div  className='Sn-fr-two-1'> Talontzz</div>
                   <div  className='Sn-fr-two-2'>28 Members</div>
                 </div>
-          </div>
+          </div> */}
 
       </div>
 

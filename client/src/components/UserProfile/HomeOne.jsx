@@ -65,25 +65,24 @@ const HomeOne = (props) => {
 
   // }
 
-  const acceptRequest = async(ffid , Typ , name , text) => {
+  const acceptRequest = async(ffid , uid, Typ , name , text) => {
         
-   
-
          const id = props.data._id;
          const fid = ffid
+         console.log(ffid)
 
          const formData = new FormData()
          formData.append('name' , name)
     formData.append('text' , text)
     formData.append('type' , Typ)
      
-       var url1 = 'http://localhost:5000/notify/del/'+id+'/'+fid
-       var url = 'http://localhost:5000/user/acceptRequest/'+id+'/'+fid
+       var url1 = 'http://localhost:5000/notify/del/'+id+'/'+ffid
+       var url = 'http://localhost:5000/user/acceptRequest/'+id+'/'+uid
 
         axios.post(url)
 
 
-      var url1 = 'http://localhost:5000/notify/del/'+id+'/'+fid
+      var url1 = 'http://localhost:5000/notify/del/'+id+'/'+ffid
 
        axios.post(url1 , formData ,  {
        headers: {
@@ -180,16 +179,16 @@ const HomeOne = (props) => {
 
   }
 
-  const DeleteRequest = async(ffid , Typ , name , text) => {
+  const DeleteRequest = async(ffid , uid , Typ , name , text) => {
     const id = props.data._id;
     const fid = ffid
 
-    // var url = 'http://localhost:5000/user/deleteRequest/'+id+'/'+fid
+    var url = 'http://localhost:5000/user/deleteRequest/'+id+'/'+uid
 
-    // await axios.post(url).then((res) => {
-    //   alert("deleted")
-    // }
-    // )
+    await axios.post(url).then((res) => {
+      alert("deleted")
+    }
+    )
 
     console.log(Typ)
     console.log(name)
@@ -242,7 +241,7 @@ window.location.reload()
 
   return (
     <div>
-      <div className="uSn-one">
+      <div className="uSn-one border-4 border-black">
         {/* ******************LOGO************************** */}
         <video
           src={Logo}
@@ -291,6 +290,7 @@ window.location.reload()
                               onClick={(e) => {
                                 acceptRequest(
                                   not._id,
+                                  not.userId,
                                   not.Typ,
                                   not.name,
                                   not.text
@@ -308,6 +308,7 @@ window.location.reload()
                               onClick={(e) => {
                                 DeleteRequest(
                                   not._id,
+                                  not._userId,
                                   not.Typ,
                                   not.name,
                                   not.text
@@ -351,7 +352,14 @@ window.location.reload()
             />
           </div>
           <div>
-            <img src={imges} alt="image" className="uSn-one-img"  onClick={(e) => {goToChat()}} />
+            <img
+              src={imges}
+              alt="image"
+              className="uSn-one-img"
+              onClick={(e) => {
+                goToChat();
+              }}
+            />
           </div>
         </div>
         {/* ****************** ButtonBody ************************** */}

@@ -109,16 +109,19 @@ const updateRequest = async (req, res) => {
     });
 
   const friendId = {
-    name2: name2,
-    profle2: profle2,
+    name: name2,
+    profile: profle2,
     userId: req.params.fid,
   };
 
   const data = {
-    name1: name1,
-    profile1: profile1,
+    name: name1,
+    profile: profile1,
     userId: req.params.id,
   };
+
+  console.log(data)
+  console.log(friendId)
 
   await Users.updateOne(
     { _id: UserId },
@@ -174,6 +177,13 @@ const DeleteRequest = async (req, res) => {
   await Users.updateOne(
     { _id: UserId },
     { $pull: { friendList: { userId: fid } } }
+  );
+
+  await Users.updateOne(
+    { _id: fid },
+    {
+      $pull: { friendList: { userId: UserId } },
+    }
   );
 
   await Users.updateOne(

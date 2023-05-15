@@ -32,6 +32,7 @@ const OtherProfile = () => {
       await axios.get( "http://localhost:5000/user/fetchUserid/" + id).then((res) => {
 
        setData(res.data)
+       console.log(data)
 
     }).catch((err) => {
 
@@ -52,8 +53,12 @@ const OtherProfile = () => {
             email={state.rdata.email}
             id={state.rdata._id}
           />
-          <HomeThree data={data} uid={state.uid} />     
-           <HomeTwo data={data} uid={state.uid} /> 
+          <HomeThree
+            Userdata={state.rdata}
+            uid={state.rdata._id}
+            Frienddata={data}
+          />
+          <HomeTwo data={data} uid={state.uid} friendData={state.rdata} />
           <HomeFour />
         </div>
       )}

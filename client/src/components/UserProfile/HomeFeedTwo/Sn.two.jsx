@@ -13,6 +13,7 @@ function SnTwo({ id , imgSrc, name, memberCount , userId , profile})
  console.log(userId)
 
  useEffect(() => {
+  //  console.log(name)
   axios.get("http://localhost:5000/user/fetchUserid/" + userId).then(async(docs) => {
      await setData(docs.data)
     })
@@ -28,6 +29,7 @@ function SnTwo({ id , imgSrc, name, memberCount , userId , profile})
 
     await axios.get( "http://localhost:5000/user/fetchUserid/" + id).then((res) => {
   
+    console.log(res.data)
     
       navi("/otherProfile" , {
         state : {
@@ -45,14 +47,14 @@ function SnTwo({ id , imgSrc, name, memberCount , userId , profile})
 
   }
   return (
-    <div className='uSn-two-ctn-body' onClick={handleChange}>
+    <div className='uSn-two-ctn-body' onClick={(e) => handleChange()}>
       <div className='uSn-two-one'>
         
           <img src={profile} alt="image" className='uSn-two-img' />
         
       </div>
       <div className='uSn-two-two'>
-        <div className='uSn-two-two-1'>{name}</div>
+        <div className='uSn-two-two-1 text-black'>{name}</div>
         <div className='uSn-two-two-2'>{memberCount}</div>
       </div>
     </div>

@@ -20,9 +20,31 @@ const socket = require("socket.io")
 const app = express();
 app.use(cors())
 
+
+let { PythonShell } = require("python-shell");
+var package_name = "python-avatars";
+let options = {
+  args: [package_name],
+}; 
+
+ 
+
+// setTimeout(() => {
+  
+   PythonShell.run("install_package.py", options).then(message => {
+    
+       console.log(message);
+     });
+
+     // end the input stream and allow the process to exit
+    
+  
+     
+// },100)
+
    
 
-// const DIR = './public/';
+// const DIR = './public/';()
 
 // const storage = multer.diskStorage({
 //     destination: (req, file, cb) => {
@@ -125,7 +147,7 @@ app.post('/upload/:id', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 
         // res.redirect('/');
       } else {
          console.log("py",data.toString());
-         if(data.toString() ==  'Error: list index out of range'  || data.toString == '0'){
+         if(data.toString == '0'){
          await Users.updateOne(
            { _id: id },
            {
@@ -134,7 +156,7 @@ app.post('/upload/:id', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 
          );
          res.send("0")
          }
-         else {
+         else if (data.toString == '1'){
             await Users.updateOne(
               { _id: id },
               {
@@ -143,8 +165,12 @@ app.post('/upload/:id', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 
             );
          res.send("1")
          }
+         else
+         {
+           res.send("0");
+         }
          
-        // res.send(data.toString());
+
       }
     });
  
@@ -206,15 +232,11 @@ const server = app.listen(process.env.PORT, () =>
 );
 
 const io = socket(server, {
+  cors: {
+    origin: "https://thechameleonapp.netlify.app",
 
- cors: {
-
-  origin: "http://localhost:3000",
-
-  credentials: true,
-
- },
-
+    credentials: true,
+  },
 });
 
 

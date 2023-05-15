@@ -6,9 +6,7 @@ import Brush from "../ProfileImages/Brush.svg"
 import Tick from "../ProfileImages/Tick.svg"
 import EditProfilePage from "./Edit"
 import Logo from "../ProfileImages/Logo.mp4"
-import Axios from 'axios'
 import { Link, useLocation , useNavigate, useNavigation} from "react-router-dom";
-import "../Profile/common.css"
 import axios from "axios";
 
 // import Background from "./Images/Background.svg"

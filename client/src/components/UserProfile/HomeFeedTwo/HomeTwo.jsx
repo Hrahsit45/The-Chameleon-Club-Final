@@ -17,34 +17,37 @@ function HomeTwo(props) {
 
   useEffect(()=>{
     setData(props.data.AcceptedReq)
+   
     setId(props.data._id)
     setTimeout(() => {
       setLoading(false);
     }, 2000);
     console.log(data)
-  //  fetchPost()
+ 
+   // fetchPost()
   },[])
 
-  const fetchPost = async() => {
+  // const fetchPost = async() => {
 
-   //console.log(props.data.AcceptedReq)
-   // setData(props.data.AcceptedReq)
-    //setId(props.data._id)     
+  //  //console.log(props.data.AcceptedReq)
+  //  // setData(props.data.AcceptedReq)
+  //   //setId(props.data._id)     
    
-     setData([])
-     const url = "http://localhost:5000/user/fetchUserid/"  + id
-      await axios.get(url).then((docs) => {
-       console.log(docs.data)
-       setData(docs.data.AcceptedReq)
-       console.log(data)
-     }
+  //    setData([])
+  //    const url = "http://localhost:5000/user/fetchUserid/"  + id
+  //     await axios.get(url).then((docs) => {
+  //      console.log(docs.data)
+  //    //  console.log("accepted req")
+  //      setData(docs.data.AcceptedReq)
+  //      console.log(data)
+  //    }
         
-     ) 
-   // console.log(props.data)
+  //    ) 
+  //  // console.log(props.data)
 
-   //fetchUser()
+  //  //fetchUser()
 
-  }
+  // }
 
 
 
@@ -110,27 +113,35 @@ function HomeTwo(props) {
   // });
 
   return (
-    <div  className='uSn-prf-tre'>
-      {loading ? <></> : <>
-      <p className='uSn-prf-tre-hn'>Connections</p>
-      
-      <input type="text" placeholder="Search members... " onChange={handleSearch} className="usrch-bar" />
-      
-      {data.map((member) => {
-        return (
-          
-          <SnTwo
-            id={member.userId}
-            imgSrc={Imges}
-            name={member.name}
-            memberCount=""
-            userId= {id}
-            profile = {member.profile}
+    <div className="uSn-prf-tre border-8 border-black">
+      {loading ? (
+        <></>
+      ) : (
+        <>
+          <p className="uSn-prf-tre-hn text-black">Connections</p>
+
+          <input
+            type="text"
+            placeholder="Search members... "
+            onChange={handleSearch}
+            className="usrch-bar"
           />
-        );
-      })}
-      </>}
-      
+
+          {data.map((member) => (
+            // console.log(member.name)
+            // return (
+            <SnTwo
+              id={member.userId}
+              imgSrc={member.profile}
+              name={member.name}
+              memberCount=""
+              userId={id}
+              profile={member.profile}
+            />
+            // );
+          ))}
+        </>
+      )}
     </div>
   );
 }

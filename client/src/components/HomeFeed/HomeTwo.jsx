@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import imges from './Images/smallImg.jpg'
 const HomeTwo = () => {
   return (
-    <div className="Sn-two">
-      <div className="Sn-two-ctn bg-black">
-        <Link to = "/chatbot">
+    <div className="Sn-two  ">
+      <div className="Sn-two-ctn bg-black border-8 border-black">
+        <Link to="/chatbot">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded my-20">
             Chat Bot
           </button>
         </Link>
       </div>
 
-      <div className="Sn-two-ctn">
+      <div className="Sn-two-ctn border-8 border-black">
         <p>My Tribes</p>
 
         <div className="Sn-two-ctn-body">

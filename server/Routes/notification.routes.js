@@ -69,6 +69,7 @@ const getNotification = async(req , res , next) => {
 const deleteNotification = async(req , res , next) => {
     
     const userId = req.params.id;
+    const notid = req.params.fid
 
     console.log(userId)
 
@@ -86,7 +87,7 @@ const deleteNotification = async(req , res , next) => {
     
 console.log(data)
    
-await Users.updateOne({ _id: userId}, { $pull : { notification : { _id : fid , Typ : ty} }})
+await Users.updateOne({ _id: userId}, { $pull : { notification : { _id : notid } }})
 await Users.updateOne({ _id: userId }, { $pull: { friendList  : { name : n , userId : fid}}});
 
 await Users.findOne({ _id : userId}).then((doc) => {

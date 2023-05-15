@@ -85,9 +85,14 @@ function HomeTwo(props) {
   // });
 
   return (
-    <div  className='uSn-prf-tre'>
-      <p className='uSn-prf-tre-hn'>Connections</p>
-      <input type="text" placeholder="Search members... " onChange={handleSearch} className="usrch-bar" />
+    <div className="uSn-prf-tre border-8 border-black">
+      <p className="uSn-prf-tre-hn text-black">Connections</p>
+      <input
+        type="text"
+        placeholder="Search members... "
+        onChange={handleSearch}
+        className="usrch-bar"
+      />
       {data.map((member) => {
         return (
           <SnTwo
@@ -96,7 +101,7 @@ function HomeTwo(props) {
             name={member.name}
             memberCount=""
             userId={props.uid}
-            profile = {member.profile}
+            profile={member.profile}
           />
         );
       })}

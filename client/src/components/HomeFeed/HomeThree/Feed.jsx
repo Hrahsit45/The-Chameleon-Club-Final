@@ -115,6 +115,10 @@ const Feed = (props) => {
 
   const AddLike = async(fid , id , ffid) => {
 
+    {
+      alert("You like the picture")
+    }
+
      if(id !== ffid)
      {
        console.log(id + "  "  + fid) 
@@ -149,7 +153,7 @@ const Feed = (props) => {
 
           <div className="feed-likes">
           <p className="feed-image-two-tx text-black">{feeed.caption}</p>
-            <button onClick={(e) => {AddLike( feeed.id ,props.id ,feeed.userId)}}> ({})</button>
+            <button onClick={(e) => {AddLike( feeed.id ,props.id ,feeed.userId)}} alt="Like the photo"></button>
           </div>
         
         </div>

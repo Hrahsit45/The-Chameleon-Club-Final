@@ -68,6 +68,12 @@ const Verifiy = () => {
           xhr.onload = function() {
             console.log('Photos uploaded');
             var res = this.response
+            console.log(res)
+            if(res == "0")
+            {
+              alert("Oopss!! Try Again")
+              window.location.reload()
+            }
           };
           xhr.send(formData);
         });
