@@ -3,9 +3,13 @@ import { useEffect , useRef , useState } from "react";
 import ".//verfication.css"
 import src1 from "../Images/Home/cam.png";
 import src2 from "../Images/Home/cam3.png"
+import { useLocation } from "react-router-dom";
+
 
 
 const Verifiy = () => {
+
+  const {state}  = useLocation()
 
     var video
     var context
@@ -60,11 +64,10 @@ const Verifiy = () => {
         canvas.toBlob(function(blob) {
           formData.append('photo', blob);
           var xhr = new XMLHttpRequest();
-          xhr.open('POST', 'http://localhost:5000/upload', true);
+          xhr.open('POST', 'http://localhost:5000/upload/'+state.data._id, true);
           xhr.onload = function() {
             console.log('Photos uploaded');
             var res = this.response
-            console.log(res)
           };
           xhr.send(formData);
         });

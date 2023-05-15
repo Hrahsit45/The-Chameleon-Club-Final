@@ -81,6 +81,7 @@ const EditProfile = () => {
 
   const handlChange = async() => {
 
+    
     if(data == null)
     { 
          //console.log(data + "hurray")
@@ -88,6 +89,14 @@ const EditProfile = () => {
     }
      else{
      //  console.log(data);
+
+              localStorage.setItem(
+                process.env.REACT_APP_LOCALHOST_KEY,
+
+                JSON.stringify(data),
+
+              //  console.log(data)
+              );
      
         navi("/userprofile" , {
           state : {
@@ -118,18 +127,17 @@ const EditProfile = () => {
 
   const verifyNow = () => {
     
-     if(data == null)
-    { 
-         alert("please enter your profile details")
-    }
-    else
-    {
-       navi("/verify" , {
-          state : {
-             data: data,
-          }
-        })
-    }
+     if (data == null) {
+       alert("please enter your profile details");
+     } else if (data.verified == true) {
+       alert("already verified")
+     } else {
+       navi("/verify", {
+         state: {
+           data: data,
+         },
+       });
+     }
 
   }
 

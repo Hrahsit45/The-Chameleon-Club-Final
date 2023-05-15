@@ -3,16 +3,19 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
+dotenv.config({path: "./config.env"})
 const Users = require("./Models/user.model")
 const path = require('path')
 const PostRoutes  = require('./Routes/post.routes')
 const UserRoutes = require('./Routes/user.routes')
 const NotificationRoutes = require('./Routes/notification.routes')
 const CustomizationRoutes = require('./Routes/verification.routes')
+const messageRoutes = require("./Routes/messageFile")
 const {v4: uuidv4} = require('uuid');
 const { spawn } = require('child_process');
 const multer = require('multer')
-
+const socket = require("socket.io")
 
 const app = express();
 app.use(cors())
@@ -51,7 +54,7 @@ const __dirnam = path.resolve();
 app.use("/public", express.static(path.join(__dirnam, "/public")));
 // app.use(express.static(__dirname))
 
-const URL="mongodb+srv://harshitshahi54:09polkmnA@cluster0.dsl99dy.mongodb.net/TCC?retryWrites=true&w=majority"
+// const URL="mongodb+srv://harshitshahi54:09polkmnA@cluster0.dsl99dy.mongodb.net/TCC?retryWrites=true&w=majority"
 
 app.use(morgan('dev'));
 app.use(express.json())
@@ -59,18 +62,26 @@ app.use("/feed" , PostRoutes)
 app.use("/user" , UserRoutes)
 app.use("/notify" , NotificationRoutes)
 app.use("/custom" , CustomizationRoutes)
+app.use("/messages" , messageRoutes);
 
 const connectionParams={
     useNewUrlParser: true,
     useUnifiedTopology: true 
 }
-mongoose.connect(URL,connectionParams)
-    .then( () => {
-        console.log('Connected to the database ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. n${err}`);
-    })
+
+const DB = process.env.URL;
+
+mongoose
+
+  .connect(DB, {
+    useNewUrlParser: true, // The underlying MongoDB driver has deprecated their current connection string parser. Because this is a major change, they added the useNewUrlParser flag to allow users to fall back to the old parser if they find a bug in the new parser. // useCreateIndex: true, // Again previously MongoDB used an ensureIndex function call to ensure that Indexes exist and, if they didn't, to create one. This too was deprecated in favour of createIndex . the useCreateIndex option ensures that you are using the new function calls. // useFindAndModify: false, // findAndModify is deprecated. Use findOneAndUpdate, findOneAndReplace or findOneAndDelete instead.
+
+    useUnifiedTopology: true, // Set to true to opt in to using the MongoDB driver's new connection management engine. You should set this option to true , except for the unlikely case that it prevents you from maintaining a stable connection.
+  })
+
+  .then(() => {
+    console.log("DB Connection successful");
+  });
 
 
 app.post('/' ,(req ,res) => {
@@ -82,7 +93,9 @@ app.post('/' ,(req ,res) => {
 
 
 // verification session 
-app.post('/upload', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 'photo', maxCount: 1 }]), function (req, res, next) {
+app.post('/upload/:id', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 'photo', maxCount: 1 }]), function (req, res, next) {
+
+    const id = req.params.id
     const uploadFile = req.files['upload'][0];
     const photoFile = req.files['photo'][0];
     console.log('Received files:', uploadFile, photoFile);
@@ -107,16 +120,30 @@ app.post('/upload', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 'pho
 
     console.log('gg')
    
-    pythonProcess.stdout.on('data', (data) => {
+    pythonProcess.stdout.on('data', async(data) => {
       if (data.toString().trim() === 'not_found') {
         // res.redirect('/');
       } else {
          console.log("py",data.toString());
-         if(data.toString() ==  'Error: list index out of range'  || data.toString == '0')
+         if(data.toString() ==  'Error: list index out of range'  || data.toString == '0'){
+         await Users.updateOne(
+           { _id: id },
+           {
+             Verified : false
+           }
+         );
          res.send("0")
-         else 
+         }
+         else {
+            await Users.updateOne(
+              { _id: id },
+              {
+                Verified: true,
+              }
+            );
          res.send("1")
-
+         }
+         
         // res.send(data.toString());
       }
     });
@@ -142,9 +169,84 @@ app.post('/upload', upload.fields([{ name: 'upload', maxCount: 1 }, { name: 'pho
 
 
 
+  app.post("/message", (req, res) => {
+    const { message } = req.body;
+    console.log(message)
+
+    const py = spawn("python", ["bot3.py"]);
+    py.stdin.write(JSON.stringify({ message }) + "\n");
+    py.stdin.end();
+
+    let response = "";
+    py.stdout.on("data", (data) => {
+      response += data.toString();
+      console.log(response)
+      // If the response ends with a newline, we assume it's complete
+       if (response.endsWith("\n")) {
+        const jsonResponse = JSON.parse(response.trim());
+        res.json(jsonResponse);
+      }
+    });
+  });
+
 
 const port = 5000;
 
-app.listen(port , ()=>{
-    console.log('app running on the port '+port);
-})
+// app.listen(port , ()=>{
+//     console.log('app running on the port '+port);
+// });
+
+
+
+
+const server = app.listen(process.env.PORT, () =>
+
+ console.log(`Server started on ${process.env.PORT}`)
+
+);
+
+const io = socket(server, {
+
+ cors: {
+
+  origin: "http://localhost:3000",
+
+  credentials: true,
+
+ },
+
+});
+
+
+
+
+global.onlineUsers = new Map();
+
+io.on("connection", (socket) => {
+
+ global.chatSocket = socket;
+
+ socket.on("add-user", (userId) => {
+
+  onlineUsers.set(userId, socket.id);
+
+ });
+
+
+
+
+ socket.on("send-msg", (data) => {
+
+  const sendUserSocket = onlineUsers.get(data.to);
+
+  if (sendUserSocket) {
+
+   socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+
+  }
+
+ });
+
+});
+
+

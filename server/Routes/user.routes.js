@@ -1,5 +1,13 @@
 const express = require("express");
+const {
+  register,
 
+  getAllUsers,
+
+  setAvatar,
+
+  logOut,
+} = require("../controllers/userController");
 const multer = require("multer");
 
 const { v4: uuidv4 } = require("uuid");
@@ -242,6 +250,8 @@ const saveUser = async (req, res) => {
     profile: url + "/public/" + req.file.filename,
   });
 
+  
+
   await Users.find({ email: req.body.Email }).then(async (docs) => {
     if (docs.data == undefined) {
         console.log(docs.length == 0)
@@ -256,6 +266,7 @@ const saveUser = async (req, res) => {
             .catch((err) => {
               console.log(err);
             });
+            //  update message schema
         } else {
           await Users.updateOne(
             { mobile: rnum },
@@ -288,7 +299,7 @@ const saveUser = async (req, res) => {
   console.log("heeeeeeeeeee");
 };
 
-const fetchUser = (req, res) => {
+const fetchUser = async(req, res) => {
   function containsOnlyNumbers(str) {
     return /^\d+$/.test(str);
   }
@@ -299,7 +310,10 @@ const fetchUser = (req, res) => {
     const num = v.substring(v.length - 10);
     const rnum = num * 1;
     Users.findOne({ mobile: rnum })
-      .then((docs) => {
+      .then(async(docs) => {
+        await Users.updateOne({mobile : rnum} , {
+          isRegistered : true
+        })
         res.json(docs);
       })
       .catch((err) => {
@@ -307,11 +321,14 @@ const fetchUser = (req, res) => {
       });
   } else {
     Users.findOne({ email: v })
-      .then((docs) => {
+      .then(async(docs) => {
         //  res.json(docs)
         if (docs == null) {
           res.json(docs);
         } else {
+          await Users.updateOne({email : v} , {
+          isRegistered : true
+        })
           res.json(docs);
         }
       })
@@ -320,6 +337,16 @@ const fetchUser = (req, res) => {
       });
   }
 };
+
+const switchU = async(res , req , next) => {
+
+  const id = req.params.id
+
+  await Users.updateOne({_id : id} , {
+    isRegistered : true
+  })
+
+}
 
 router.post("/sendRequest/:id/:fid", sendRequest);
 
@@ -336,5 +363,10 @@ router.get("/all", All);
 router.get("/fetchUser/:data", fetchUser);
 
 router.post("/saveUser", upload.single('photo'), saveUser);
+router.post("/register", register);
+  
+router.get("/allusers/:id", getAllUsers);
+
+router.post("/switchRegister/:id" , switchU)
 
 module.exports = router;

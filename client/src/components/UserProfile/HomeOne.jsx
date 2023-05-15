@@ -45,6 +45,26 @@ const HomeOne = (props) => {
 
   }, [])
 
+  // const addNot = () => {
+
+  //   console.log("inside at not")
+
+  //    var url = "http://localhost:5000/notify/get/" + props.data._id;
+  //    axios
+  //      .get(url)
+  //      .then((res) => {
+  //        // console.log(res.data.notification)
+  //        var data = res.data.notification;
+  //        //  console.log(data)
+  //        setNotifications(data);
+  //        // console.log(notifications)
+  //      })
+  //      .catch((err) => {
+  //        console.log(err);
+  //      });  
+
+  // }
+
   const acceptRequest = async(ffid , Typ , name , text) => {
         
    
@@ -207,6 +227,18 @@ window.location.reload()
      });
   }
 
+  const goToChat = () => {
+    navi("/chat", {
+      state: {
+        id: props.data._id,
+
+        name: props.data.name, // number: props.data.number,
+
+        email: props.data.email,
+      },
+    });
+  }
+
 
   return (
     <div>
@@ -258,7 +290,7 @@ window.location.reload()
                             <button
                               onClick={(e) => {
                                 acceptRequest(
-                                  not.userId,
+                                  not._id,
                                   not.Typ,
                                   not.name,
                                   not.text
@@ -275,7 +307,7 @@ window.location.reload()
                             <button
                               onClick={(e) => {
                                 DeleteRequest(
-                                  not.userId,
+                                  not._id,
                                   not.Typ,
                                   not.name,
                                   not.text
@@ -290,7 +322,18 @@ window.location.reload()
                             </button>
                           </div>
                         ) : (
-                          <button>View</button>
+                          <button
+                            onClick={(e) => {
+                              DeleteRequest(
+                                not._id,
+                                not.Typ,
+                                not.name,
+                                not.text
+                              );
+                            }}
+                          >
+                            Delete Notifcation
+                          </button>
                         )}
                       </div>
                     </div>
@@ -300,10 +343,15 @@ window.location.reload()
             </Popup>
           </div>
           <div>
-            <img src={imges} alt="image" className="uSn-one-img"  onClick={goToEditProfile}/>
+            <img
+              src={imges}
+              alt="image"
+              className="uSn-one-img"
+              onClick={goToEditProfile}
+            />
           </div>
           <div>
-            <img src={imges} alt="image" className="uSn-one-img" />
+            <img src={imges} alt="image" className="uSn-one-img"  onClick={(e) => {goToChat()}} />
           </div>
         </div>
         {/* ****************** ButtonBody ************************** */}

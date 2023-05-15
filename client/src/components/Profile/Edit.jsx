@@ -10,6 +10,7 @@ import imag from "../images-videos/Avatar.png";
 
   var allPhone = [];
   var allEmail = [];
+  var fetchUrl
 
 function EditProfilePage(props) {
 
@@ -32,12 +33,8 @@ function EditProfilePage(props) {
   const [var2 , setVar2] = useState(0)
   const [var3 , setVar3] = useState("")
   
-  var fetchUrl = "http://localhost:5000/fetchUser/user/"
 
 
-  useEffect(() => {
-    fetchUser()
-  })
 
 
   useEffect(() => {
@@ -58,7 +55,7 @@ function EditProfilePage(props) {
         console.log(allPhone);
       });
 
-  }, []);
+  },[]);
 
 
  
@@ -79,24 +76,52 @@ function EditProfilePage(props) {
      window.location.reload()
      }
      else{
-    // if(allEmail.includes)
     var Data = new FormData();
     Data.append('Name' , name1)
     Data.append('Email' , email1)
     Data.append('mobile_no' , phoneNumber1)
     Data.append('photo' , photo1)
     setPhoto(photo1)
-     window.location.reload();
+   
     await Axios.post("http://localhost:5000/user/saveUser", 
     Data).then(async(doc) => {
-      await axios.get("http://localhost:5000/user/fetchUser" + email).then((res) =>{
-         setName(res.data.name);
-         setEmail(res.data.email);
-         setphoneNumber(res.data.mobile);
-         setPhoto(res.data.profile);
-         setName1(res.data.name);
-         setEmail1(res.data.email);
-         setphoneNumber1(res.data.mobile);
+  //    if(doc.data.isRegistered == false){
+    
+        // console.log(doc.data)
+      //  
+            
+        //  if (data.status === false) {
+        //    console.log("error");
+        //  }
+
+        //  if (data.status === true) {
+        //    console.log(data)
+       
+        //    ); // navigate("/");
+        //  }
+ // }
+      await axios.get("http://localhost:5000/user/fetchUser/" + email).then((res) =>{
+        setName(res.data.name);
+        setEmail(res.data.email);
+        setphoneNumber(res.data.mobile);
+        setPhoto(res.data.profile);
+        setName1(res.data.name);
+        setEmail1(res.data.email);
+        setphoneNumber1(res.data.mobile);
+         localStorage.setItem(
+           process.env.REACT_APP_LOCALHOST_KEY,
+
+           JSON.stringify(res.data),
+
+           console.log(res.data)
+         );
+
+                 navi("/userprofile", {
+                   state: {
+                     id: res.data,
+                   },
+                 });
+       // window.location.reload();
       })
     }).catch((err) => {
       console.log(err)
@@ -135,10 +160,11 @@ function EditProfilePage(props) {
    
 
    const fetchUser = async() => {
-     console.log(phoneNumber) 
-
-
-     console.log(3)
+     if (phoneNumber === 0) {
+       fetchUrl = "http://localhost:5000/user/fetchUser/" + email;
+     } else {
+       fetchUrl = "http://localhost:5000/user/fetchUser/" + phoneNumber;
+     }
      await Axios.get(fetchUrl)
     .then(async(res) => {
      // console.log(res)

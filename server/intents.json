@@ -1,0 +1,634 @@
+{
+
+  "intents": [
+  
+   
+   {
+  
+   "tag": "goodbye",
+  
+   "patterns": ["Bye", "See you later", "Goodbye", "Take care"],
+  
+   "responses": ["Goodbye!", "See you later!", "Take care!"]
+  
+   },
+  
+   {
+  
+   "tag": "thanks",
+  
+   "patterns": ["Thanks", "Thank you", "Appreciate it"],
+  
+   "responses": ["You're welcome!", "No problem!", "Anytime!"]
+  
+   },
+  
+   {
+  
+   "tag": "tag",
+  
+   "patterns": ["What's your tag?", "Who are you?", "What should I call you?"],
+  
+   "responses": ["My tag is Chatbot.", "You can call me Chatbot.", "I'm Chatbot."]
+  
+   },
+  
+   {
+  
+   "tag": "age",
+  
+   "patterns": ["How old are you?", "What's your age?"],
+  
+   "responses": ["I was created recently, so I'm quite young!", "I'm just a baby, so I don't have an age."]
+  
+   },
+  
+   {
+  
+   "tag": "help",
+  
+   "patterns": ["Can you help me?", "What can you help me with?", "What are your abilities?"],
+  
+   "responses": ["I can help you with a variety of things like finding information, making recommendations, or just chatting with you."]
+  
+   },
+   {
+    "tag": "weather",
+  
+    "patterns": ["What's the weather like today?", "Will it rain today?", "How hot/cold is it outside?"],
+   
+    "responses": ["Sorry, I'm not able to provide live weather information at the moment."]
+   },
+  
+
+        {
+            "tag": "greeting",
+            "patterns": ["hi", "hello", "hey", "what's up", "hi there"],
+            "responses": ["Hello! How can I assist you today?", "Hi there! How can I help you today?", "Hey! What can I help you with?", "Hi, how can I assist you?", "What's up? How can I help you today?"]
+        },
+        {
+            "tag": "tcc",
+            "patterns": ["what is tcc", "what does tcc stand for", "tell me about tcc"],
+            "responses": ["TCC is a social media platform.", "TCC stands for The Community Connection, a social media platform.", "TCC is a place to connect with friends and family.", "TCC is a social networking platform where people can connect with each other and share information."]
+        },
+        {
+            "tag": "create_account",
+            "patterns": ["how do I create an account", "sign up for tcc"],
+            "responses": ["You can sign up for TCC by clicking the \"Sign Up\" button on the home page.", "To create an account on TCC, click the \"Sign Up\" button and follow the instructions.", "To sign up for TCC, go to the home page and click on the \"Sign Up\" button."]
+        },
+        {
+            "tag": "delete_account",
+            "patterns": ["can I delete my account", "how do I delete my account"],
+            "responses": ["Yes, you can delete your account in your account settings.", "To delete your account, go to your account settings and click on the delete account option.", "To delete your account, navigate to your account settings and click on the \"Delete Account\" button."]
+        },
+        {
+            "tag": "change_password",
+            "patterns": ["how do I change my password", "change my password"],
+            "responses": ["You can change your password in your account settings.", "To change your password, go to your account settings and select the \"Change Password\" option.", "To update your password, navigate to your account settings and select the \"Change Password\" button."]
+        },
+        {
+            "tag": "report_user",
+            "patterns": ["how do I report a user", "report a user"],
+            "responses": ["You can report a user by clicking the \"Report\" button on their profile page.", "To report a user, navigate to their profile page and click on the \"Report\" button.", "If you need to report a user, go to their profile page and click on the \"Report\" button."]
+        },
+        {
+            "tag": "community_rules",
+            "patterns": ["what are tcc's community rules", "community guidelines"],
+            "responses": ["You can find TCC's community rules in the \"Community Guidelines\" section.", "To view TCC's community guidelines, navigate to the \"Community Guidelines\" section of the site.", "TCC's community guidelines are located in the \"Community Guidelines\" section of the site."]
+        },
+        {
+            "tag": "edit_profile",
+            "patterns": ["how do I edit my profile", "edit my profile"],
+            "responses": ["You can edit your profile by clicking the \"Edit Profile\" button.", "To edit your profile, go to your profile page and click on the \"Edit Profile\" button.", "To update your profile, navigate to your profile page and click on the \"Edit Profile\" button."]
+        },
+        {
+          "tag": "upload_photos",
+
+  "patterns": ["can I upload photos on tcc", "upload photos"],
+  "responses": ["Yes, you can upload photos on TCC."]
+},
+{
+  "tag": "find_friends",
+  "patterns": ["how do I find my friends on tcc", "find friends"],
+  "responses": ["You can search for your friends on TCC using their usertag or email."]
+},
+{
+  "tag": "send_friend_request",
+  "patterns": ["how do I send a friend request", "send friend request"],
+  "responses": ["You can send a friend request by clicking the \"Add Friend\" button."]
+},
+{
+  "tag": "whats_new",
+  "patterns": ["what's new on tcc", "latest updates"],
+  "responses": ["You can find the latest updates on TCC's news feed."]
+},
+{
+  "tag": "block_user",
+  "patterns": ["how do I block someone on tcc", "block user"],
+  "responses": ["You can block someone by clicking the \"Block\" button on their profile page."]
+},
+
+      {
+          "tag": "like_post",
+          "patterns": ["how do I like a post", "like post"],
+          "responses": ["You can like a post by clicking the \"Like\" button."]
+      },
+      {
+          "tag": "comment_post",
+          "patterns": ["how do I comment on a post", "comment on post"],
+          "responses": ["You can comment on a post by typing your comment in the comment section."]
+      },
+      {
+          "tag": "share_post",
+          "patterns": ["how do I share a post", "share post"],
+          "responses": ["You can share a post by clicking the \"Share\" button."]
+      },
+      {
+          "tag": "follow_user",
+          "patterns": ["how do I follow someone on TCC", "follow user"],
+          "responses": ["You can follow someone by clicking the \"Follow\" button on their profile."]
+      },
+      {
+          "tag": "unfollow_user",
+          "patterns": ["how do I unfollow someone on TCC", "unfollow user"],
+          "responses": ["You can unfollow someone by clicking the \"Unfollow\" button on their profile."]
+      },
+      {
+          "tag": "send_message",
+          "patterns": ["how do I send a message", "send message"],
+          "responses": ["You can send a message by clicking the \"Message\" button on their profile."]
+      },
+      {
+          "tag": "join_group",
+          "patterns": ["how do I join a group", "join group"],
+          "responses": ["You can join a group by searching for it and clicking the \"Join\" button."]
+      },
+      
+          {
+            "tag": "create_group",
+            "patterns": ["how do i create a group", "create group"],
+            "responses": ["You can create a group by clicking the \"Create Group\" button."]
+          },
+          {
+            "tag": "leave_group",
+            "patterns": ["how do i leave a group", "leave group"],
+            "responses": ["You can leave a group by clicking the \"Leave Group\" button."]
+          },
+          {
+            "tag": "report_post",
+            "patterns": ["how do i report a post", "report post"],
+            "responses": ["You can report a post by clicking the \"Report\" button on the post."]
+          },
+          {
+            "tag": "see_notifications",
+            "patterns": ["how do i see my notifications", "see notifications"],
+            "responses": ["You can see your notifications by clicking the bell icon."]
+          },
+          {
+            "tag": "search_something",
+            "patterns": ["how do i search for something", "search something"],
+            "responses": ["You can search for something by typing in the search bar."]
+          },
+          {
+            "tag": "view_messages",
+            "patterns": ["how do I view my messages", "view messages"],
+            "responses": ["You can view your messages by clicking the \"Messages\" button."]
+        },
+        {
+            "tag": "view_friends",
+            "patterns": ["how do I view my friends", "view friends"],
+            "responses": ["You can view your friends by clicking the \"Friends\" button."]
+        },
+        {
+            "tag": "view_groups",
+            "patterns": ["how do I view my groups", "view groups"],
+            "responses": ["You can view your groups by clicking the \"Groups\" button."]
+        },
+        {
+          "tag": "meaning_of_life",
+          "patterns": [
+              "What's the meaning of life?"
+          ],
+          "responses": [
+              "That's a big question! What do you think it is?"
+          ]
+      },
+       {
+          "tag": "favorite_color",
+          "patterns": [
+              "What's your favorite color?"
+          ],
+          "responses": [
+              "I'm a robot, I don't have favorite colors, but I think blue looks nice."
+          ]
+      },
+      {
+          "tag": "favorite_superhero",
+          "patterns": [
+              "Who's your favorite superhero?"
+          ],
+          "responses": [
+              "I like Iron Man. He's smart, funny, and rich."
+          ]
+      },
+      {
+        "tag": "weather_today",
+        "patterns": [
+            "What's the weather like today?",
+            "How's the weather today?",
+            "Is it going to rain today?",
+            "What's the temperature today?"
+        ],
+        "responses": [
+            "Sorry, I'm not sure. Can I look it up for you?"
+        ]
+    },
+    {
+        "tag": "aliens",
+        "patterns": [
+            "Do you believe in aliens?",
+            "Are aliens real?",
+            "Have aliens visited Earth?"
+        ],
+        "responses": [
+            "I don't know, do you?"
+        ]
+    },
+    {
+        "tag": "stay_fit",
+        "patterns": [
+            "What's the best way to stay fit?",
+            "How can I get in shape?",
+            "What's the best exercise for me?"
+        ],
+        "responses": [
+            "Exercise and eat healthy. What do you like to do?"
+        ]
+    },
+    {
+        "tag": "cook_spaghetti",
+        "patterns": [
+            "How do I cook spaghetti?",
+            "What's the best way to make spaghetti?",
+            "Can you give me a spaghetti recipe?"
+        ],
+        "responses": [
+            "There are many ways to cook it. Would you like a recipe?"
+        ]
+    },
+    {
+        "tag": "capital_australia",
+        "patterns": [
+            "What's the capital of Australia?",
+            "Where is the Australian capital?",
+            "Canberra is the capital of which country?"
+        ],
+        "responses": [
+            "Canberra. Did you know that kangaroos are native to Australia?"
+        ]
+    },
+    {
+        "tag": "favorite_movie",
+        "patterns": [
+            "What's your favorite movie?",
+            "What movie do you recommend?",
+            "Have you seen any good movies lately?"
+        ],
+        "responses": [
+            "I'm a chatbot, I don't have the ability to watch movies, but I heard The Matrix is good."
+        ]
+    },
+    {
+        "tag": "sing_song",
+        "patterns": [
+            "Can you sing a song for me?",
+            "Sing me a song, please.",
+            "I want to hear you sing."
+        ],
+        "responses": [
+            "Sure, Daisy, Daisy, give me your answer, do. I'm half crazy all for the love of you."
+        ]
+    },
+    {
+        "tag": "relax_after_long_day",
+        "patterns": [
+            "What's the best way to relax after a long day?",
+            "How can I unwind after a stressful day?",
+            "What do you recommend for stress relief?"
+        ],
+        "responses": [
+            "That depends on what you find relaxing. Do you have any hobbies?"
+        ]
+    },
+    {
+      "tag": "fix_faucet",
+      "patterns": [
+        "How do I fix a leaky faucet?",
+        "My faucet is leaking. What should I do?",
+        "What's the best way to fix a leaky faucet?",
+        "I need to repair my faucet. How do I do it?",
+        "Can you help me fix my faucet?"
+      ],
+      "responses": [
+        "You might need to replace the washer. Would you like me to look up a tutorial for you?"
+      ]
+    },
+    {
+      "tag": "find_restaurant",
+      "patterns": [
+        "Can you help me find a good restaurant nearby?",
+        "I'm hungry. What are some good restaurants nearby?",
+        "What's a good place to eat around here?",
+        "Where can I find some good food?",
+        "I want to eat out. Any recommendations?"
+      ],
+      "responses": [
+        "Sure, what type of food are you in the mood for?"
+      ]
+    },
+    {
+      "tag": "favorite_book",
+      "patterns": [
+        "What's your favorite book?",
+        "Do you like to read?",
+        "Any good book recommendations?",
+        "What book should I read next?",
+        "What's a classic book that you recommend?"
+      ],
+      "responses": [
+        "As a chatbot, I don't read books, but I've heard 'The Hitchhiker's Guide to the Galaxy' is good."
+      ]
+    },
+    {
+      "tag": "tv_show_recommendation",
+      "patterns": [
+        "Can you recommend a good TV show to watch?",
+        "What's a good show to binge-watch?",
+        "What's a popular TV show that's worth watching?",
+        "What TV show should I watch next?",
+        "Do you have any recommendations for a good TV series?"
+      ],
+      "responses": [
+        "Sure, what genre do you like?"
+      ]
+    },
+    {
+      "tag": "breakup_recovery",
+      "patterns": [
+        "How do I get over a breakup?",
+        "I just went through a breakup. Any advice?",
+        "What's the best way to heal after a breakup?",
+        "How can I move on from a relationship?",
+        "Do you have any tips for recovering from a breakup?"
+      ],
+      "responses": [
+        "It takes time, but focusing on self-care and spending time with friends and family can help."
+      ]
+    },
+    {
+      "tag": "saving_money",
+      "patterns": [
+        "What's the best way to save money?",
+        "I need to start saving money. Any tips?",
+        "How can I save more money?",
+        "What are some good ways to cut back on expenses?",
+        "Can you give me some budgeting advice?"
+      ],
+      "responses": [
+        "Making a budget and sticking to it can help. Do you need help creating a budget?"
+      ]
+    },
+    
+        {
+          "tag": "save_money",
+          "patterns": [
+            "What's the best way to save money?",
+            "How can I save money?",
+            "Any tips for saving money?",
+            "How do I budget my money?"
+          ],
+          "responses": [
+            "Making a budget and sticking to it can help. Do you need help creating a budget?"
+          ]
+        },
+        {
+          "tag": "learn_language",
+          "patterns": [
+            "What's the best way to learn a new language?",
+            "How can I learn a language?",
+            "Any tips for language learning?",
+            "What's the most effective way to learn a language?"
+          ],
+          "responses": [
+            "There are many ways, such as taking a class, using a language learning app, or immersing yourself in the language."
+          ]
+        },
+        {
+          "tag": "plan_vacation",
+          "patterns": [
+            "Can you help me plan a vacation?",
+            "I need help planning a trip.",
+            "Where should I go on vacation?",
+            "Any tips for planning a vacation?"
+          ],
+          "responses": [
+            "Sure, where are you thinking of going?"
+          ]
+        },
+        {
+          "tag": "start_day",
+          "patterns": [
+            "What's the best way to start the day?",
+            "How do I start my day right?",
+            "What morning routine should I follow?",
+            "Any tips for starting the day off on a good note?"
+          ],
+          "responses": [
+            "That's a personal preference. What do you enjoy doing in the morning?"
+          ]
+        },
+        {
+          "tag": "recommend_podcast",
+          "patterns": [
+            "Can you recommend a good podcast to listen to?",
+            "What podcasts do you recommend?",
+            "Any good podcasts on [topic]?",
+            "What are some popular podcasts?"
+          ],
+          "responses": [
+            "Sure, what topics are you interested in?"
+          ]
+        },
+        {
+          "tag": "first_impression",
+          "patterns": [
+            "How do I make a good first impression?",
+            "Any tips for making a good first impression?",
+            "What should I do to impress someone when we first meet?",
+            "How can I leave a good first impression?"
+          ],
+          "responses": [
+            "Being friendly, confident, and respectful can go a long way."
+          ]
+        },
+        {
+          "tag": "Stress Management",
+          "patterns": [
+            "What's the best way to handle stress?",
+            "How can I deal with stress?",
+            "What are some stress management techniques?"
+          ],
+          "responses": [
+            "Taking breaks, practicing self-care, and talking to someone can help."
+          ]
+        },
+        {
+          "tag": "Job Interview Outfit",
+          "patterns": [
+            "Can you help me choose an outfit for a job interview?",
+            "What should I wear to a job interview?",
+            "How do I dress professionally for a job interview?"
+          ],
+          "responses": [
+            "Sure, what type of job are you interviewing for?"
+          ]
+        },
+        {
+          "tag": "Favorite Animal",
+          "patterns": [
+            "What's your favorite animal?",
+            "Do you have a favorite animal?",
+            "Which animal do you like the most?"
+          ],
+          "responses": [
+            "As a chatbot, I don't have a favorite animal, but I think penguins are pretty cool!"
+          ]
+        },
+        {
+          "tag":"General",
+          "patterns": [
+            "What's up?",
+            "How's it going?",
+            "How are you?",
+            "Hey there"
+          ],
+          "responses": [
+            "Not much, just here to help. How can I assist?"
+          ]
+        },
+        
+        
+        
+        {
+          "tag":"Vacation",
+          "patterns": [
+            "Can you help me plan a vacation?",
+            "I need help planning a trip",
+            "Where should I go for vacation?",
+            "What are some good travel destinations?"
+          ],
+          "responses": [
+            "Of course! Where would you like to go?"
+          ]
+        },
+        
+        {
+          "tag":"Account Setting",
+          "patterns": [
+            "I need help with my account settings",
+            "Can you assist me with my account?",
+            "I'm having trouble with my account",
+            "How do I change my account settings?"
+          ],
+          "responses": [
+            "No problem. What specifically do you need help with?"
+          ]
+        },
+        
+        {
+          "tag":"News",
+          "patterns": [
+            "What's the latest news?",
+            "Can you give me a news update?",
+            "What's happening in the world?",
+            "What's in the news today?"
+          ],
+          "responses": [
+            "I can provide you with news updates from various sources. Which category interests you?"
+          ]
+        },
+        
+            {
+              "tag": "fun_facts",
+              "patterns": [
+                "Do you know any fun facts?"
+              ],
+              "responses": [
+                "Yes! Did you know that a group of flamingos is called a flamboyance?"
+              ]
+            },
+            {
+              "tag": "math_help",
+              "patterns": [
+                "Can you help me with a math problem?"
+              ],
+              "responses": [
+                "Sure thing! Let's get started."
+              ]
+            },
+            {
+              "tag": "movies_playing",
+              "patterns": [
+                "What movies are playing at the theater?"
+              ],
+              "responses": [
+                "Which theater are you interested in?"
+              ]
+            },
+            {
+              "tag": "workout_tips",
+              "patterns": [
+                "Can you give me some workout tips?"
+              ],
+              "responses": [
+                "Of course! What's your fitness level and what kind of exercises do you enjoy?"
+              ]
+            },
+            {
+              "tag": "meaning_of_life",
+              "patterns": [
+                "What's the meaning of life?"
+              ],
+              "responses": [
+                "I think that's a question best answered by philosophers, not chatbots."
+              ]
+            },
+            {
+              "tag": "bot_tag",
+              "patterns": [
+                "What's your tag?"
+              ],
+              "responses": [
+                "My tag is CHATZYYY"
+              ]
+            },
+          
+        
+      
+    
+    
+
+   {
+  
+   "tag": "joke",
+  
+   "patterns": ["Tell me a joke", "Do you know any jokes?", "Make me laugh"],
+  
+   "responses": ["Why did the tomato turn red? Because it saw the salad dressing!", "Why don't scientists trust atoms? Because they make up everything!"]
+  
+   }
+  
+  ]
+  
+  }
+

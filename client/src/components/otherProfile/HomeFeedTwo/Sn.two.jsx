@@ -27,7 +27,7 @@ function SnTwo({ id, imgSrc, name, memberCount, userId , profile}) {
         navi("/otherProfile", {
           state: {
             rdata: data,
-            data: res.data._id,
+            data: res.data,
             uid: userId,
             id: data._id,
           },

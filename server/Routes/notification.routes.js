@@ -86,7 +86,8 @@ const deleteNotification = async(req , res , next) => {
     
 console.log(data)
    
-await Users.updateOne({ _id: userId}, { $pull : { notification : {userId : fid , Typ : ty} }})
+await Users.updateOne({ _id: userId}, { $pull : { notification : { _id : fid , Typ : ty} }})
+await Users.updateOne({ _id: userId }, { $pull: { friendList  : { name : n , userId : fid}}});
 
 await Users.findOne({ _id : userId}).then((doc) => {
     console.log("whooo")

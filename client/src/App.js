@@ -14,12 +14,13 @@ import 'firebase/compat/firestore';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import EditProfile from './components/Profile/EditProfile';
 import Feed from './components/HomeFeed/feed';
+import Chat from './components/Chat/Chat';
 import HomeFeed from './components/HomeFeed/HomeFeed';
 import Customize from './components/Cread/Main';
 import Verifiy from './components/ProfileVerification/verification.jsx';
 import UserProfile from './components/UserProfile/HomeFeed';
 import OtherProfile from './components/otherProfile/HomeFeed'
-
+import ChatbotComponent from './components/chatbot/Chatbot';
 
 const firebaseConfig = {
     apiKey: "AIzaSyD84GjMOO2CiUgRPmUWmPDEGMGvRH2oxBU",
@@ -59,12 +60,14 @@ const App = () => {
           <Route path="/login" element = { <Login />} />
           <Route path = "/profile" element = { <EditProfile />} />
           <Route path = "/" element = { <Home />} />
+          <Route path = "/chat" element = {<Chat />} />
           <Route path = "/feed" element = { <Feed /> } />
           <Route path = "/homefeed" element = { <HomeFeed /> } />
            <Route path = "/custom" element = { <Customize />}/> 
            <Route path = "/verify" element = { <Verifiy />} /> 
           <Route path = "/UserProfile" element = { <UserProfile />} />
           <Route path = "/otherProfile" element = { <OtherProfile />} />
+          <Route path = "/chatbot" element = { <ChatbotComponent />} />
          </Routes>
         </div>
         </Router>

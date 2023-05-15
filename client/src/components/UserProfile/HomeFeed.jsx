@@ -20,10 +20,10 @@ const Home = () => {
 
   useEffect(() => {
 
-    setTimeout(() => {
+   setTimeout(() => {
       setLoading(false);
     }, 2000);
-  
+   
   const url = "http://localhost:5000/user/fetchUserid/"  + state.id._id
   axios.get(url).then((docs) => {
     setData(docs.data)

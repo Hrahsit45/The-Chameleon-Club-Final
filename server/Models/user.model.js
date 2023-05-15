@@ -7,6 +7,10 @@ const NUserSchema = mongoose.Schema({
     email: String,
     mobile: String,
     profile: String,
+    isAvatarImageSet: {
+        type: Boolean,
+        default: false,
+    },
     Verified : {
         type : Boolean,
         default : false
@@ -37,7 +41,11 @@ const NUserSchema = mongoose.Schema({
         userId : String,
         Typ : String, 
         profile : String, 
-    }]
+    }],
+    isRegistered : {
+        type : Boolean,
+        default : false
+    }
     
 })
 

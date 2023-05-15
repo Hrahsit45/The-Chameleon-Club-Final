@@ -5,7 +5,7 @@ import './Feed.css';
 import axios from 'axios';
 import React, { useState , useEffect } from 'react';
 
-
+var fid
 
 
 const Feed = (props) => {
@@ -113,8 +113,16 @@ const Feed = (props) => {
   // };\\
 
 
-  const AddLike = () => {
+  const AddLike = async(fid , id , ffid) => {
 
+     if(id !== ffid)
+     {
+       console.log(id + "  "  + fid) 
+       await axios.post("http://localhost:5000/feed/like/" + id + "/" + fid).then((d) => {
+         
+       });
+     }
+ 
   }
 
 
@@ -122,7 +130,7 @@ const Feed = (props) => {
     loading ? <div>Loading...</div> :
     <div className="feed-container">
       {data.map((feeed) => (
-        <div className="feed" key={feeed._id}>
+        <div className="feed" key={feeed.id}>
           <div className="feed-header">
             <div className='feed-header-bdy'>
             <div className='pro-fed-img'><img src={feeed.profile} alt="feed" className="feed-image" />
@@ -141,7 +149,7 @@ const Feed = (props) => {
 
           <div className="feed-likes">
           <p className="feed-image-two-tx text-black">{feeed.caption}</p>
-            <button onClick={AddLike(feeed._id)}> ({})</button>
+            <button onClick={(e) => {AddLike( feeed.id ,props.id ,feeed.userId)}}> ({})</button>
           </div>
         
         </div>

@@ -86,15 +86,12 @@ const AddPost = (props) => {
        navi("/otherProfile", {
          state: {
            rdata: props.data,
-           data: docs.data._id,
-           uid: id,
-           id: props.data._id,
+           data: docs.data,
+           uid: props.data._id,
+           id: id,
          },
        });
-  }
-  )
- }
- 
+      })}
     return(
       <div class="mb-3 py-5 px-3">
       <div class="relative mb-4 flex w-full flex-wrap items-stretch">

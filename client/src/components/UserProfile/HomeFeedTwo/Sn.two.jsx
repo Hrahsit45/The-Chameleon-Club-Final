@@ -12,12 +12,18 @@ function SnTwo({ id , imgSrc, name, memberCount , userId , profile})
 
  console.log(userId)
 
+ useEffect(() => {
+  axios.get("http://localhost:5000/user/fetchUserid/" + userId).then(async(docs) => {
+     await setData(docs.data)
+    })
+ },[])
+
   const handleChange = async() => {
 
     console.log(userId + " here")
 
-   await axios.get("http://localhost:5000/user/fetchUserid/" + userId).then((docs) => {
-      setData(docs.data)
+   await axios.get("http://localhost:5000/user/fetchUserid/" + userId).then(async(docs) => {
+     await setData(docs.data)
     })
 
     await axios.get( "http://localhost:5000/user/fetchUserid/" + id).then((res) => {
@@ -26,7 +32,7 @@ function SnTwo({ id , imgSrc, name, memberCount , userId , profile})
       navi("/otherProfile" , {
         state : {
            rdata : data,
-           data : res.data._id,
+           data : res.data,
            uid : userId,
            id : data._id,
 

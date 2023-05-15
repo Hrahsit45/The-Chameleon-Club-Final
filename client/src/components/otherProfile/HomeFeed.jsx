@@ -12,12 +12,15 @@ const OtherProfile = () => {
 
   const {state} = useLocation()
 
-  const id = state.data
+  const id = state.data._id
 
     const [data , setData] = useState([{}])
     const [load , setLoad] = useState(true)
+    const [loading, setLoading] = useState(true);
      
     useEffect(() => {
+
+      console.log(state.rdata)
      setTimeout(() => {
        setLoad(false)
      },2000)
@@ -37,20 +40,25 @@ const OtherProfile = () => {
 
 
   return (
-    <div className='home-head'>
-      <img src={HomeBAck} alt="background" id='bg-feed'/>
-      {load ? <></> : 
-      <div className='uhome-bdy'>
-        
-          <NewHomeOne data = {state.rdata} name = {state.rdata.name} email = {state.rdata.email} id = {state.rdata._id} />
-          <HomeThree data = {data} uid = {state.uid}/>
-          <HomeTwo data = {data} uid = {state.uid} />
-          
-          <HomeFour/>
-    
-    </div>}
+    <div className="home-head">
+      <img src={HomeBAck} alt="background" id="bg-feed" />
+      {load ? (
+        <></>
+      ) : (
+        <div className="uhome-bdy">
+          <NewHomeOne
+            data={state.rdata}
+            name={state.rdata.name}
+            email={state.rdata.email}
+            id={state.rdata._id}
+          />
+          <HomeThree data={data} uid={state.uid} />     
+           <HomeTwo data={data} uid={state.uid} /> 
+          <HomeFour />
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 export default OtherProfile

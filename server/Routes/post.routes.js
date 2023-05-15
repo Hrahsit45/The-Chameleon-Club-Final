@@ -65,7 +65,7 @@ const savePost = async(req, res, next) => {
         profile: profile
     }; 
 
-    console.log(Post)
+  ////  console.log(Post)
     Posts.create(Post)
    
     }
@@ -80,20 +80,20 @@ const getPost = async (req , res , next) => {
     await Users.findOne({_id : userid}).then((res) => {
         FriendIds =  res.AcceptedReq;
     })
-
+  
     let Araay = []
-
+ 
     FriendIds.map((mem) => {
-        Araay.push(mem.userId)
+        Araay.push(mem.userId), console.log(mem.userId + "...");
     })
-
+  
     Araay.push(userid)
 
     try{
 
         Posts.find({userId : { $in : Araay}}).then((docs) => {
              res.json(docs)
-            console.log(docs)
+           //// console.log(docs)
         }
         ).catch((err) => {
             console.log(err);
@@ -123,7 +123,7 @@ const getUserPost = async (req , res , next) => {
 
         Posts.find({userId : { $in : Araay}}).then((docs) => {
              res.json(docs)
-            console.log(docs)
+          //  console.log(docs)
         }
         ).catch((err) => {
             console.log(err);
@@ -147,7 +147,7 @@ const updatePost =async (req , res) => {
     })
 
     await Posts.findOne({_id : id}).then((docs) => {
-        console.log(docs)
+      //  console.log(docs)
     })
 
 
@@ -181,11 +181,15 @@ const getFollowers = async (req , res , next) => {
         FriendIds =  res.AcceptedReq;
     }) 
 
-    console.log(FriendIds)
+    let Araay = [];
+
+    FriendIds.map((mem) => {
+      Araay.push(mem.userId);
+    });
 
     try{
-
-        Posts.find({userId : { $in : FriendIds}}).then((docs) => {
+  
+        Posts.find({userId : { $in : Araay }}).then((docs) => {
              res.json(docs)
           //  console.log(docs)
         }
@@ -196,21 +200,37 @@ const getFollowers = async (req , res , next) => {
     }catch (error) {
         console.log(error)
     }
-
-
     
 }
 
+const Like = async(req , res , next) => {
 
+    var id = req.params.id;
+    var fid = req.params.fid;
+        
+    await Posts.findOne({_id : fid}).then(async(docs) => {
+          await Users.updateOne(
+            { _id: id },
+            { $push: { likedpost: docs.userId } }
+          );
+          await Users.updateOne({ _id: id }, { $push: { notification : {
+              name : docs.name,
+              text : "Liked your Post",
+              userId : docs.userId,
+              Typ : 'Like',
+              profile : docs.profile
+          }} });
+    })
+}
 
-
+router.post('/like/:id/:fid' , Like)
 
 router.post('/:id', upload.single('photo'), savePost)
 
-router.get('/:fid/:id' , getFollowers)
+router.get('/f/:id' , getFollowers)
 
 router.get('/:id' , getPost)
-
+ 
 router.patch('/:id',  updatePost)
 
 router.delete('/:id' , deletePost)
